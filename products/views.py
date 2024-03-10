@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from products.models import Product, Category, SizeVariant
 from accounts.models import *
@@ -13,12 +13,17 @@ def get_products(request, slug):
         print(e)
 
 def add_to_cart(request, uid):
+    user = User.objects.all()
+    current_user = None
+    if current_user != user:
+        return redirect('signup')
+    
     variant = request.GET.get('variant')
     product = Product.objects.get(uid = uid)
     user = request.user
     cart, _= Cart.objects.get_or_create(user = user, is_paid = False)
-    cart_item = CartItems.objects.create(cart = cart, product = product)
-
+    cart_item = CartItems.objects.create(cart = cart, product = product) 
+    
     if variant:
         variant = request.GET.get('variant')
         size_variant = SizeVariant.objects.get(size_name = variant)
