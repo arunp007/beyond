@@ -16,14 +16,8 @@ def add_to_cart(request, uid):
     variant = request.GET.get('variant')
     product = Product.objects.get(uid = uid)
     user = request.user
-    user = User.objects.all()
-    current_user = ''
-    if current_user != user:
-        return redirect('signup')
-    
-    else:
-        cart, _= Cart.objects.get_or_create(user = user, is_paid = False)
-        cart_item = CartItems.objects.create(cart = cart, product = product) 
+    cart, _= Cart.objects.get_or_create(user = user, is_paid = False)
+    cart_item = CartItems.objects.create(cart = cart, product = product) 
     
     if variant:
         variant = request.GET.get('variant')
