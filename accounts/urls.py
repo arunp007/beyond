@@ -9,5 +9,5 @@ urlpatterns = [
     path('login/', login_page , name = 'login'),
     path('signup/', signup_page, name = 'signup'),
     path('add_to_cart/<uid>/', add_to_cart, name = 'add_to_cart'),
-    path('cart', cart, name = 'cart'),
+    path('cart/', cart, name = 'cart'),
 ]

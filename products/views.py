@@ -38,7 +38,8 @@ def add_to_cart(request, uid):
 
 
 def cart(request):
-    return render(request, 'accounts/cart.html')
+    context = {'cart': Cart.objects.filter(is_paid = False, user = request.user)}
+    return render(request, 'accounts/cart.html' ,context)
 
 
 def maternity(request):
