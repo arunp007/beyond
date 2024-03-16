@@ -15,17 +15,26 @@ def get_products(request, slug):
 
 def add_to_cart(request, uid):
     variant = request.GET.get('variant')
-    product = Product.objects.get(uid = uid)
-    user = request.user
-    cart, _= Cart.objects.get_or_create(user = user, is_paid = False)
-    cart_item = CartItems.objects.create(cart = cart, product = product) 
     
-    if variant:
-        variant = request.GET.get('variant')
-        size_variant = SizeVariant.objects.get(size_name = variant)
-        cart_item.size_variant = size_variant
-        cart_item.save(size_variant = size_variant)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    try:
+        product = Product.objects.get(uid = uid)
+        user = request.user
+        
+        if not user.is_authenticated:
+            return redirect('signup')  
+        
+        cart, _ = Cart.objects.get_or_create(user=user, is_paid=False)
+        cart_item = CartItems.objects.create(cart=cart, product=product) 
+        
+        if variant:
+            size_variant = SizeVariant.objects.get(size_name=variant)
+            cart_item.size_variant = size_variant
+            cart_item.save()
+        
+        return redirect(request.META.get('HTTP_REFERER'))
+    
+    except Profile.DoesNotExist:
+        return redirect('signup') 
 
 
 def cart(request):
