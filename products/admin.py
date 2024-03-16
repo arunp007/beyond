@@ -10,6 +10,7 @@ class ProductImageAdmin(admin.StackedInline):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['category','product_name',  'color', 'price', 'product_description']
     inlines = [ProductImageAdmin,]
+    
 
 @admin.register(SizeVariant)
 

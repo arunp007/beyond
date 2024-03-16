@@ -11,6 +11,7 @@ def get_products(request, slug):
 
     except Exception as e:
         print(e)
+        
 
 def add_to_cart(request, uid):
     variant = request.GET.get('variant')
@@ -23,10 +24,12 @@ def add_to_cart(request, uid):
         variant = request.GET.get('variant')
         size_variant = SizeVariant.objects.get(size_name = variant)
         cart_item.size_variant = size_variant
-        cart_item.save()
+        cart_item.save(size_variant = size_variant)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+def cart(request):
+    return render(request, 'accounts/cart.html')
 
 
 def maternity(request):

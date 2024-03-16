@@ -30,7 +30,7 @@ class Product(BaseModel):
     product_name = models.CharField(max_length = 100)
     slug = models.SlugField(unique = True, null = True, blank = True)
     category = models.ForeignKey(Category, on_delete = models.CASCADE, related_name = "products")
-    price = models.IntegerField()
+    price = models.TextField(max_length = 10, null = True)
     dummy_price = models.TextField(max_length = 10, null = True)
     product_description = models.TextField(max_length = 500)
     color = models.CharField(max_length = 100, null = True)

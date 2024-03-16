@@ -410,24 +410,23 @@
                             <button id="plus" onclick="return plus()">+</button>
                         </div>
                     </div>
-                    <form method="post">
-                        {% csrf_token %}
+                    
                     <div class="form-group">
                         <label for="size" class="size">Size:</label>
-                        <select id="inputSize" class="form-control" name="size">
+                        <select id="inputSize" class="form-control">
                             
                           <option value="" value="">Select Size</option>
 
                           {% for size in size_variant %}
 
-                          <option value="{{size.size_name}}" name = "selected_size" {% if size_name.selected %}selected_size{% endif %}>{{size.size_name}}</option>
+                          <option value="{{size.size_name}}" name = "select_size" {% if size_name.selected %}selected_size{% endif %}>{{size.size_name}}</option>
                           
                           {% endfor %}
                           
                         </select>
                         
                     </div>
-                    </form>
+                    
                 </div>
 
                 <a href="{% url 'add_to_cart' product.uid %}?variant={{selected_size}}" id="add-to-cart" class="btn btn-outline-dark">Add To Cart</a><br>

@@ -395,7 +395,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
         <a href="#"><span class="fa fa-search"></span></a>
-        <a href="#"><span class="fa fa-shopping-cart"></span></a>
+        <a href="#"><span class="fa fa-shopping-cart"></span></a> <label style="color: red !important; font-size: 20px;">{{ request.user.profile.get_cart_count }}</label>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -465,7 +465,7 @@
             <div class="col-xs-3 col-lg-3">
                 <div class="grid">
                    <div class="grid-image">
-                    <img src="{% static 'images/maturnity.jpg' %}" class="image" alt="">
+                    <img src="{% static 'images/maternity.jpg' %}" class="image" alt="">
                    </div>
                     <div class="grid-content">
                         <h6 class="grid-title">OUR BEST SELLING</h6>
@@ -478,7 +478,7 @@
             <div class="col-xs-3 col-lg-3">
                 <div class="grid">
                    <div class="grid-image">
-                    <img src="{% static 'images/kaffan.jpg' %}" class="image" alt="">
+                    <img src="{% static 'images/kaftan.jpg' %}" class="image" alt="">
                    </div>
                     <div class="grid-content">
                         <h6 class="grid-title">LATEST TRENDING</h6>
@@ -492,7 +492,7 @@
             <div class="col-xs-3 col-lg-3">
                 <div class="grid">
                    <div class="grid-image">
-                    <img src="{% static 'images/sleeve.jpg' %}" class="image" alt="">
+                    <img src="{% static 'images/threebyfour.jpg' %}" class="image" alt="">
                    </div>
                     <div class="grid-content">
                         <h6 class="grid-title">OUR MOST SELLING</h6>
