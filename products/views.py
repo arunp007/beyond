@@ -23,9 +23,8 @@ def add_to_cart(request, uid):
         if not user.is_authenticated:
             return redirect('login')  
         
-        if user.is_authenticated:
-            cart, _ = Cart.objects.get_or_create(user=user, is_paid=False)
-            cart_item = CartItems.objects.create(cart=cart, product=product) 
+        cart, _ = Cart.objects.get_or_create(user=user, is_paid=False)
+        cart_item = CartItems.objects.create(cart=cart, product=product) 
         
         if variant:
             size_variant = SizeVariant.objects.get(size_name=variant)
