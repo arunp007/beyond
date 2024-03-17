@@ -40,7 +40,6 @@ def add_to_cart(request, uid):
 def cart(request):
     return render(request, 'accounts/cart.html')
 
-
 def maternity(request):
     category_name = 'Maternity Nighties'
     category = Category.objects.get(category_name = category_name)
