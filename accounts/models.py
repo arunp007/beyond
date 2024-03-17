@@ -8,7 +8,7 @@ class Profile(BaseModel):
     user  = models.OneToOneField(User, on_delete = models.CASCADE, related_name = "profile")
 
     def get_cart_count(self):
-       return Cart.objects.filter(is_paid = False, user = self.user).count()
+       return CartItems.objects.filter(cart__is_paid = False, cart__user = self.user).count()
     
 
 class Cart(BaseModel):
