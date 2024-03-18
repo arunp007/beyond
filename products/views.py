@@ -21,7 +21,7 @@ def add_to_cart(request, uid):
         user = request.user
         
         if not user.is_authenticated:
-            return redirect('login')  
+            return redirect(request.META.get('login')) 
         
         cart, _ = Cart.objects.get_or_create(user=user, is_paid=False)
         cart_item = CartItems.objects.create(cart=cart, product=product) 
@@ -38,7 +38,26 @@ def add_to_cart(request, uid):
 
 
 def cart(request):
-    return render(request, 'accounts/cart.html')
+    try:
+        cart = Cart.objects.get(is_paid=False, user=request.user)
+        cart_items = CartItems.objects.filter(cart=cart)
+        total_price = sum(float(cart.product.price.replace(',','')) for cart in cart_items)
+        return render(request, 'accounts/cart.html', {'cart_items': cart_items, 'total_price': total_price})
+    
+    except Cart.DoesNotExist:
+        return redirect('login')
+    
+
+def remove_cart(request, cart_item_uid):
+    try:
+        cart_item = CartItems.objects.get(uid = cart_item_uid)
+        cart_item.delete()
+
+    except Exception as e:
+        print(e)
+    
+    return redirect(request.META.get('HTTP_REFERER')) 
+
 
 def maternity(request):
     category_name = 'Maternity Nighties'
