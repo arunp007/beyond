@@ -44,8 +44,8 @@ def cart(request):
         total_price = sum(float(cart.product.price.replace(',','')) for cart in cart_items)
         return render(request, 'accounts/cart.html', {'cart_items': cart_items, 'total_price': total_price})
     
-    except Cart.DoesNotExist:
-        return redirect('login')
+    except Exception as e:
+        print(e)
     
 
 def remove_cart(request, cart_item_uid):
