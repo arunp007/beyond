@@ -21,7 +21,7 @@ def add_to_cart(request, uid):
         user = request.user
         
         if not user.is_authenticated:
-            return redirect(request.META.get('login')) 
+            return redirect('login') 
         
         cart, _ = Cart.objects.get_or_create(user=user, is_paid=False)
         cart_item = CartItems.objects.create(cart=cart, product=product) 
