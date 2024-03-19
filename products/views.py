@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from products.form import SearchForm
 from products.models import Product, Category, SizeVariant
 from accounts.models import *
 
@@ -42,7 +43,7 @@ def cart(request):
         user = request.user
         if not user.is_authenticated:
             return redirect('login')
-        
+    
         cart = Cart.objects.get(is_paid=False, user=request.user)
         cart_items = CartItems.objects.filter(cart=cart)
         total_price = sum(float(cart.product.price.replace(',','')) for cart in cart_items)
@@ -61,6 +62,16 @@ def remove_cart(request, cart_item_uid):
         print(e)
     
     return redirect(request.META.get('HTTP_REFERER')) 
+
+
+def search(request):
+    form = SearchForm(request.GET)
+    results = None
+
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        results =  Product.objects.filter(product_name__icontains=query) | Product.objects.filter(price__icontains=query) | Product.objects.filter(dummy_price__icontains=query)
+    return render(request, 'product/search.html', {'form': form, 'results': results})
 
 
 def maternity(request):

@@ -253,7 +253,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
-        <a href="#"><span class="fa fa-search"></span></a>
+        <a href="{% url 'search' %}"><span class="fa fa-search"></span></a>
         <a href="{% url 'cart' %}"><i class="fa badge fa-badge" value="{{ request.user.profile.get_cart_count }}">&#xf07a;</i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

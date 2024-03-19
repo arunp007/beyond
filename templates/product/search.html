@@ -5,33 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
-    <title>Account</title>
+    <title>Search</title>
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
     <style>
         .logo{
-            width: 220px !important;
-            height: 70px !important;
-            margin-left: 20px !important;
-            margin-right: -10px !important;
-            margin-top: 10px !important;
-            margin-bottom: 10px !important;
+            width: 220px;
+            height: 70px;
+            margin-left: 20px;
+            margin-right: -10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .navbar-brand{
+            font-size: 38px;
             font-weight: bolder;
             font-family:'Courier New', Courier, monospace;
-            margin-right: 10px !important;
-            margin-left: -30px !important;
+            margin-right: 5px;
+            margin-left: -30px;
         }
 
         .fa-badge{
             color: black;
             margin-left: 10px;
             margin-right: 10px;
-            font-size: 24px !important;
+            font-size: 24px;
         }
 
         .badge:after{
@@ -48,107 +48,154 @@
         }
 
         .fa-search{
-            color: black !important;
-            margin-left: 10px !important;
-            font-size: 24px !important;
+            color: black;
+            margin-left: 20px;
+            font-size: 24px;
         }
 
         .navbar-toggler{
-            border: none !important;
+            border: none;
             color: black !important;
         }
 
         .navbar-nav{
-            margin-left: 70px !important;
-            margin-bottom: 20px !important;
+            margin-left: 70px;
+            margin-bottom: 20px;
         }
 
         .nav-item{
-            margin-left: 5px !important;
-            margin-right: 5px !important;
-            font-size: 18px !important;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 18px;
         }
 
         .account-link{
             color: black !important;
             text-decoration: none !important;
-            margin-left: 5px !important;
-            margin-right: 5px !important;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         .fa-user-circle{
-            font-size: 28px !important;
+            font-size: 28px;
         }
 
         .btn-dark{
-            margin-right: 10px !important;
-            width: 110px !important;
+            margin-right: 10px;
+            width: 110px;
         }
 
         .btn-outline-dark{
-            width: 110px !important;
+            width: 110px;
+            margin-right: 5px;
         }
 
         .btn-outline-dark{
             background-color: white !important;
             color: black !important;
-            border: solid black !important;
+            border: solid black;
         }
 
         #container{
-            margin-top: 180px;
-            margin-bottom: 130px;
+            margin-top: 170px;
+            margin-bottom: 150px;
         }
 
-        form{
+        #form{
             margin-top: 50px;
-            padding-left: 20px;
-            padding-right: 20px;
-            margin-bottom: 70px;
+            margin-bottom: 50px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .btn-primary{
+            background-color: black !important;
+            border: 0;
+            border-color: 0;
+            width: 50px;
+        }
+
+        .btn-primary:focus{
+            box-shadow: none !important;
+        }
+
+        #fa-search{
+            color: white;
+            margin-left: -5px;
         }
 
         .heading{
-            margin-top: 20px;
-            margin-bottom: 30px;
-            font-size: 25px;
+            margin-top: 50px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
-        .form-control{
-            margin-bottom: 20px;
+        hr{
+            margin-bottom: 50px !important;
         }
 
-        .form-control:focus{
-            border-color: black !important;
-            box-shadow: none;
+        .sub-heading{
+            margin-left: 20px;
+        }
+
+
+
+        .card{
+            width: 300px !important;
+            height: 420px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 50px !important;
+            margin-bottom: 50px !important;
+            
+        }
+
+        .card-img-top{
+            height: 300px;
         }
 
         .link{
-            color: black !important;
+            color:black !important;
             text-decoration: none !important;
         }
 
-        #button{
-            margin-top: 30px !important;
-            width: 295px !important; 
-            margin-left: auto !important;
-            margin-right: auto !important;
-            display: block !important;
-            border-radius: 0 !important;
+        .link:hover{
+            color: #666666 !important;
         }
 
-        .heading2{
-            margin-top: 50px;
-            margin-bottom: 30px;
+        .card-title{
+            font-size: 17px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
-        .description{
-            color: gray;
-            margin-bottom: 30px;
+        .card-price{
+            font-size: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: red;
         }
 
-        #button2{
-            border-radius: 0 !important;
+        .dummy-price{
+            color:#666666;
+            margin-left: 10px;
         }
+
+        /* image hover zoom in without overflow property */
+
+        .grid-image{
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .grid-image .card-img-top{
+            transition: transform .5s ease;
+        }
+
+        .grid-image:hover .card-img-top{
+            transform: scale(1.5);
+        }
+
+        /* image hover zoom in without overflow property end */
+        
 
         #footer{
             background-color: #efeded;
@@ -238,7 +285,7 @@
             font-weight: light !important;
             color: black;
             margin-left: 90px;
-            margin-bottom: 20px;
+            margin-bottom: 20px !important;
         }
 
         .footer-icon{
@@ -247,7 +294,7 @@
             margin-left: auto;
             margin-right: auto;
             display: block;
-            margin-top: 5px;
+            margin-top: 5px !important;
             margin-bottom: 20px;
         }
     </style>
@@ -257,7 +304,7 @@
         <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
         <a href="{% url 'search' %}"><span class="fa fa-search"></span></a>
         <a href="{% url 'cart' %}"><i class="fa badge fa-badge" value="{{ request.user.profile.get_cart_count }}">&#xf07a;</i></a>
-        <button class="navbar-toggler" id="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
@@ -293,38 +340,65 @@
             <a class="btn btn-dark js-scroll-trigger" href="{% url 'signup' %}">Register</a>
     
             <a class="btn btn-outline-dark js-scroll-trigger" href="{% url 'login' %}">Log in</a>
+           
           </form>
         </div>
     </nav>
 
-    
     <div class="container-fluid" id="container">
         <div class="row">
-            <div class="col-xs-2 col-lg-2"></div>
+
+            <div class="col-xs-3 col-lg-3"></div>
+
+            <div class="col-xs-6 col-lg-6">
+                <form method="GET" action="{% url 'search' %}" id="form">
+                    <input type="text" class="form-control" name="query" id="query" placeholder="Search">
+                    <button type="submit" class="btn btn-primary"><span class="fa fa-search" id="fa-search"></span></button>
+                </form>
+            </div>   
+
+            <div class="col-xs-3 col-lg-3"></div>
+
+            <div class="col-xs-12 col-lg-12">
+                <h2 class="heading">Search Results</h2>
+                <hr>
+            </div>
+
+            {% if results %}
+
+            {% for product in results %}
+
             <div class="col-xs-3 col-lg-3">
-                <form method="post">
-                    {% csrf_token %}
-                    <h4 class="heading">Log In</h4>
-                    {% include "base/alert.html" %}
-                    <input type="text" class="form-control" name="email" placeholder="Email" required>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required autocomplete="off">
-                    <a href="" class="link">Forgot your password?</a><br>
-                    <button type="submit" id="button" class="btn btn-dark">Sign In</button>
-                </form>
+                <div class="card" style="width: 18rem;">
+                    <a href="{% url 'get_products' slug=product.slug %}"><div class="grid-image"><img class="card-img-top" src="/media/{{product.product_images.first.image}}" alt="Card image cap"></div></a>
+                    <div class="card-body">
+                      <a href="{% url 'get_products' slug=product.slug %}" class="link"><h5 class="card-title">{{product.product_name}}</h5></a>
+                      <p class="card-price">₹ {{product.price}} <strike class="dummy-price">₹{{product.dummy_price}}</strike></p> 
+                    </div>
+                </div>
             </div>
 
-            <div class="col-xs-1 col-lg-1"></div>
+            {% endfor %}
 
-            <div class="col-xs-4 col-lg-4">
-                <form>
-                    <h4 class="heading2">New Customer</h4>
-                    <p class="description">Sign up for early Sale access plus <br> new arrivals, trends and promotions. </p>
-                    <a href="{% url 'signup' %}" id="button2" class="btn btn-dark">Register</a>
-                </form>
-            </div>
-            <div class="col-xs-2 col-lg-2"></div>
+            {% else %}
+                <p class="sub-heading">No results found...</p>
+            {% endif %}
+            
+           
+
+            
+
+
+
+            
+           
+            
+            
         </div>
     </div>
+
+    
+    
     
     <div class="container-fluid" id="footer">
         <div class="row">
@@ -379,10 +453,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-
+    
     <script>
         $(document).ready(function(){
           $(".js-scroll-trigger").click(function(){
@@ -390,7 +461,6 @@
           });
         });
     </script>
-   
 
 </body>
 </html>
