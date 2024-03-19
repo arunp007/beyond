@@ -39,6 +39,10 @@ def add_to_cart(request, uid):
 
 def cart(request):
     try:
+        user = request.user
+        if not user.is_authenticated:
+            return redirect('login')
+        
         cart = Cart.objects.get(is_paid=False, user=request.user)
         cart_items = CartItems.objects.filter(cart=cart)
         total_price = sum(float(cart.product.price.replace(',','')) for cart in cart_items)
