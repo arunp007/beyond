@@ -141,17 +141,18 @@
 
         .card{
             width: 300px !important;
-            height: 420px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
+            margin-left: 40px !important;
+            margin-right: 10px;
+            border: 0px;
             margin-top: 50px !important;
             margin-bottom: 50px !important;
+            border-radius: 0px !important;
             
         }
 
         .card-img-top{
-            height: 300px;
+            height: 300px !important;
+            border-radius: 0px !important;
         }
 
         .link{
@@ -171,7 +172,7 @@
         .card-price{
             font-size: 15px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            color: red;
+            color: black;
         }
 
         .dummy-price{
@@ -195,6 +196,24 @@
         }
 
         /* image hover zoom in without overflow property end */
+        
+        @media(max-width: 768px){
+            .card{
+                width: 160px !important;
+                margin-left: 10px !important;
+                margin-right: 10px !important;
+                height: 300px !important;
+            }
+
+            .card-img-top{
+                width: 160px !important;
+                height: 300px !important;
+            }
+
+            .card-title{
+                font-size: 11px;
+            }
+        }
         
 
         #footer{
@@ -368,12 +387,16 @@
 
             {% for product in results %}
 
-            <div class="col-xs-3 col-lg-3">
-                <div class="card" style="width: 18rem;">
-                    <a href="{% url 'get_products' slug=product.slug %}"><div class="grid-image"><img class="card-img-top" src="/media/{{product.product_images.first.image}}" alt="Card image cap"></div></a>
-                    <div class="card-body">
-                      <a href="{% url 'get_products' slug=product.slug %}" class="link"><h5 class="card-title">{{product.product_name}}</h5></a>
-                      <p class="card-price">₹ {{product.price}} <strike class="dummy-price">₹{{product.dummy_price}}</strike></p> 
+            <div class="row row-cols-2 g-2">
+                <div class="col">
+                    <div class="card">
+                        <div class="grid-image">
+                            <a href="{% url 'get_products' product.slug %}"><img src="/media/{{product.product_images.first.image}}" class="card-img-top" alt="..."></a>
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'get_products' product.slug %}" class="link"><h5 class="card-title">{{product.product_name}}</h5></a>
+                            <p class="card-price">₹ {{product.price}} <strike class="dummy-price">₹{{product.dummy_price}}</strike></p>
+                        </div>
                     </div>
                 </div>
             </div>
