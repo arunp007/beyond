@@ -103,17 +103,18 @@
 
         .card{
             width: 300px !important;
-            height: 420px;
-            margin-left: 10px;
+            margin-left: 20px;
             margin-right: 10px;
             border: 0px;
             margin-top: 50px !important;
             margin-bottom: 50px !important;
+            border-radius: 0px !important;
             
         }
 
         .card-img-top{
-            height: 300px;
+            height: 300px !important;
+            border-radius: 0px !important;
         }
 
         .link{
@@ -325,9 +326,9 @@
     <div class="container-fluid" id="container">
         <div class="row">
 
-            
-
             {% for i in products %}
+
+            
 
             <div class="row row-cols-2 g-2">
                 <div class="col">
@@ -344,9 +345,6 @@
             </div>
 
            {% endfor %}
-            
-           
-            
             
         </div>
     </div>
