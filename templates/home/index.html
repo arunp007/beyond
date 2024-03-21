@@ -120,7 +120,7 @@
         }
 
         .grid-image{
-            height: 480px;
+            height: 480px !important;
             overflow: hidden;
         }
 
@@ -133,8 +133,8 @@
         }
 
         .image{
-            width: 320px;
-            height: 480px;
+            width: 320px !important;
+            height: 480px !important;
         }
 
         .grid-content{
@@ -202,20 +202,6 @@
             margin-bottom: 30px;
         }
 
-        .card{
-            display: flex !important;
-            width: 310px;
-            height: 420px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-
-        .card-img-top{
-            height: 300px;
-        }
 
         #carousel-control-prev{
             background-color: black;
@@ -244,9 +230,20 @@
             transform: translateY(-50%);
         }
 
-        .card-title{
-            font-size: 17px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        .card{
+            width: 300px !important;
+            margin-left: 85px;
+            margin-right: 10px;
+            border: 0px;
+            margin-top: 50px !important;
+            margin-bottom: 50px !important;
+            border-radius: 0px !important;
+            
+        }
+
+        .card-img-top{
+            height: 300px !important;
+            border-radius: 0px !important;
         }
 
         .link{
@@ -258,16 +255,23 @@
             color: #666666 !important;
         }
 
+        .card-title{
+            font-size: 17px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
         .card-price{
             font-size: 15px;
-            color: red;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: black;
         }
 
         .dummy-price{
             color:#666666;
             margin-left: 10px;
         }
+
+        /* image hover zoom in without overflow property */
 
         .card-image{
             height: 300px;
@@ -280,6 +284,27 @@
 
         .card-image:hover .card-img-top{
             transform: scale(1.5);
+        }
+
+        /* image hover zoom in without overflow property end */
+        
+        @media(max-width: 768px){
+            .card{
+                width: 160px !important;
+                margin-left: 10px !important;
+                margin-right: 10px !important;
+                height: 280px !important;
+            }
+
+            .card-img-top{
+                width: 160px !important;
+                height: 200px !important;
+            }
+
+            .card-title{
+                font-size: 11px;
+                font-weight: lighter;
+            }
         }
 
         
@@ -532,21 +557,23 @@
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
 
-                        {% for i in products|slice:"3" %}
+                        {% for i in products|slice:"4" %}
 
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <div class="row">
 
-                                {% for i in products|slice:"3" %}
+                                {% for i in products|slice:"4" %}
 
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-image">
-                                            <a href="{% url 'get_products' i.slug %}"><img src="/media/{{i.product_images.first.image}}" class="card-img-top" alt="..."></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <a href="{% url 'get_products' i.slug %}" class="link"><h5 class="card-title">{{i.product_name}}</h5></a>
-                                            <p class="card-price">₹ {{i.price}} <strike class="dummy-price">{{i.dummy_price}}</strike></p>
+                                <div class="row row-cols-2 g-2">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <a href="{% url 'get_products' i.slug %}"><img src="/media/{{i.product_images.first.image}}" class="card-img-top" alt="..."></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="{% url 'get_products' i.slug %}" class="link"><h5 class="card-title">{{i.product_name}}</h5></a>
+                                                <p class="card-price">₹ {{i.price}} <strike class="dummy-price">₹{{i.dummy_price}}</strike></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -579,21 +606,23 @@
                 <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
 
-                        {% for j in products|slice:"3" %}
+                        {% for j in products|slice:"4" %}
 
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <div class="row">
 
-                                {% for j in products|slice:"3" %}
+                                {% for j in products|slice:"4" %}
                                 
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-image">
-                                            <a href="{% url 'get_products' j.slug %}"><img src="/media/{{j.product_images.first.image}}" class="card-img-top" alt="..."></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <a href="{% url 'get_products' j.slug %}" class="link"><h5 class="card-title">{{j.product_name}}</h5></a>
-                                            <p class="card-price">₹ {{j.price}} <strike class="dummy-price">{{j.dummy_price}}</strike></p>
+                                <div class="row row-cols-2 g-2">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <a href="{% url 'get_products' j.slug %}"><img src="/media/{{j.product_images.first.image}}" class="card-img-top" alt="..."></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="{% url 'get_products' j.slug %}" class="link"><h5 class="card-title">{{j.product_name}}</h5></a>
+                                                <p class="card-price">₹ {{j.price}} <strike class="dummy-price">₹{{j.dummy_price}}</strike></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -627,21 +656,23 @@
                 <div id="carouselExampleControls3" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
 
-                        {% for k in products|slice:"3" %}
+                        {% for k in products|slice:"4" %}
 
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <div class="row">
 
-                                {% for k in products|slice:"3" %}
+                                {% for k in products|slice:"4" %}
 
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-image">
-                                            <a href="{% url 'get_products' k.slug %}"><img src="/media/{{k.product_images.first.image}}" class="card-img-top" alt="..."></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <a href="{% url 'get_products' k.slug %}" class="link"><h5 class="card-title">{{k.product_name}}</h5></a>
-                                            <p class="card-price">₹ {{k.price}} <strike class="dummy-price">{{k.dummy_price}}</strike></p>
+                                <div class="row row-cols-2 g-2">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <a href="{% url 'get_products' k.slug %}"><img src="/media/{{k.product_images.first.image}}" class="card-img-top" alt="..."></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="{% url 'get_products' k.slug %}" class="link"><h5 class="card-title">{{k.product_name}}</h5></a>
+                                                <p class="card-price">₹ {{k.price}} <strike class="dummy-price">₹{{k.dummy_price}}</strike></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
