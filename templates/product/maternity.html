@@ -104,9 +104,9 @@
         .card{
             width: 300px !important;
             height: 420px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
+            margin-left: 10px;
+            margin-right: 10px;
+            border: 0px;
             margin-top: 50px !important;
             margin-bottom: 50px !important;
             
@@ -158,6 +158,21 @@
 
         /* image hover zoom in without overflow property end */
         
+        @media(max-width: 768px){
+            .card{
+                width: 200px !important;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .card-img-top{
+                width: 200px !important;
+            }
+
+            .card-title{
+                font-size: 11px;
+            }
+        }
 
         #footer{
             background-color: #efeded;
@@ -310,26 +325,25 @@
     <div class="container-fluid" id="container">
         <div class="row">
 
+            
+
             {% for i in products %}
 
-            <div class="col-xs-3 col-lg-3">
-                <div class="card">
-                    <div class="grid-image">
-                        <a href="{% url 'get_products' i.slug %}"><img src="/media/{{i.product_images.first.image}}" class="card-img-top" alt="..."></a>
-                    </div>
-                    <div class="card-body">
-                        <a href="{% url 'get_products' i.slug %}" class="link"><h5 class="card-title">{{i.product_name}}</h5></a>
-                        <p class="card-price">₹ {{i.price}} <strike class="dummy-price">₹{{i.dummy_price}}</strike></p>
+            <div class="row row-cols-2 g-2">
+                <div class="col">
+                    <div class="card">
+                        <div class="grid-image">
+                            <a href="{% url 'get_products' i.slug %}"><img src="/media/{{i.product_images.first.image}}" class="card-img-top" alt="..."></a>
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'get_products' i.slug %}" class="link"><h5 class="card-title">{{i.product_name}}</h5></a>
+                            <p class="card-price">₹ {{i.price}} <strike class="dummy-price">₹{{i.dummy_price}}</strike></p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {% endfor %}
-
-        
-
-
-
+           {% endfor %}
             
            
             
