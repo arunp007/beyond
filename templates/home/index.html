@@ -113,42 +113,27 @@
         }
         
         .grid{
-            margin-top: 90px !important;
-            margin-bottom: 70px !important;
+            margin-top: 90px;
+            margin-bottom: 70px;
             margin-left: 20px;
             margin-right: 20px;
+            height: 300px;
+            width: 300px;
+            background-color: rgb(191, 191, 192);
         }
 
-        .grid-image{
-            height: 480px !important;
-            overflow: hidden;
-        }
-
-        .grid-image .image{
-            transition: transform .5s ease;
-        }
-
-        .grid-image:hover .image{
-            transform: scale(1.5);
-        }
-
-        .image{
-            width: 320px !important;
-            height: 480px !important;
-        }
-
-        .grid-content{
-            margin-top: -160px;
-            margin-left: 30px;
-            position: sticky;
+        .grid:hover{
+            background-color: black;
         }
 
         .grid-title{
             font-size: 17px;
-            color: gold;
+            color: white;
             font-weight: bolder;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             margin-bottom: 10px;
+            padding-top: 90px;
+            margin-left: 30px;
             text-shadow: 1px 1px black;
         }
 
@@ -157,6 +142,7 @@
             color: white;
             font-weight: bolder;
             margin-bottom: 20px;
+            margin-left: 30px;
             text-shadow: 1px 1px black;
         }
 
@@ -167,13 +153,12 @@
             border-color: black !important;
             width: 180px;
             font-weight: bolder;
-
+            margin-left: 30px;
         }
 
         .btn-primary:hover{
             background-color: rgba(109, 110, 110, 0.2) !important;
             border-color: white !important;
-            
         }
 
         .btn-primary:focus{
@@ -293,7 +278,6 @@
                 width: 160px !important;
                 margin-left: 10px !important;
                 margin-right: 10px !important;
-                height: 300px !important;
             }
 
             .card-img-top{
@@ -509,41 +493,25 @@
             
             <div class="col-xs-3 col-lg-3">
                 <div class="grid">
-                   <div class="grid-image">
-                    <img src="{% static 'images/maternity.jpg' %}" class="image" alt="">
-                   </div>
-                    <div class="grid-content">
-                        <h6 class="grid-title">OUR BEST SELLING</h6>
-                        <h5 class="grid-title2">MATERNITY NIGHTIES</h5>
-                        <a href="{% url 'maternity' %}" class="btn btn-primary">VIEW PRODUCTS</a>
-                    </div>
+                    <h6 class="grid-title">OUR BEST SELLING</h6>
+                    <h5 class="grid-title2">MATERNITY NIGHTIES</h5>
+                    <a href="{% url 'maternity' %}" class="btn btn-primary">VIEW PRODUCTS</a>
                 </div>
             </div>
 
             <div class="col-xs-3 col-lg-3">
                 <div class="grid">
-                   <div class="grid-image">
-                    <img src="{% static 'images/kaftan.jpg' %}" class="image" alt="">
-                   </div>
-                    <div class="grid-content">
-                        <h6 class="grid-title">LATEST TRENDING</h6>
-                        <h5 class="grid-title2">KAFTAN NIGHTIES</h5>
-                        <a href="{% url 'kaftan' %}" class="btn btn-primary">VIEW PRODUCTS</a>
-                    </div>
+                    <h6 class="grid-title">LATEST TRENDING</h6>
+                    <h5 class="grid-title2">KAFTAN NIGHTIES</h5>
+                    <a href="{% url 'kaftan' %}" class="btn btn-primary">VIEW PRODUCTS</a>
                 </div>
             </div>
 
-
             <div class="col-xs-3 col-lg-3">
                 <div class="grid">
-                   <div class="grid-image">
-                    <img src="{% static 'images/threebyfour.jpg' %}" class="image" alt="">
-                   </div>
-                    <div class="grid-content">
-                        <h6 class="grid-title">OUR MOST SELLING</h6>
-                        <h5 class="grid-title2">3/4 SLEEVE NIGHTIES</h5>
-                        <a href="{% url 'threebyfourth_sleeve' %}" class="btn btn-primary">VIEW PRODUCTS</a>
-                    </div>
+                    <h6 class="grid-title">OUR MOST SELLING</h6>
+                    <h5 class="grid-title2">3/4 SLEEVE NIGHTIES</h5>
+                    <a href="{% url 'threebyfourth_sleeve' %}" class="btn btn-primary">VIEW PRODUCTS</a>
                 </div>
             </div>
 

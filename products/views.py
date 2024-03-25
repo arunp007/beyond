@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from products.form import SearchForm
 from products.models import Product, Category, SizeVariant
 from accounts.models import *
@@ -26,7 +26,7 @@ def add_to_cart(request, uid):
         
         cart, _ = Cart.objects.get_or_create(user=user, is_paid=False)
         cart_item = CartItems.objects.create(cart=cart, product=product) 
-        
+
         if variant:
             size_variant = SizeVariant.objects.get(size_name=variant)
             cart_item.size_variant = size_variant

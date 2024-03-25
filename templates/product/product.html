@@ -411,7 +411,7 @@
             <div class="col-xs-6 col-lg-6">
                 <h1>{{product.product_name}}</h1>
                 <span class="fa fa-star" style="margin-left: 12px;"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> <label class="review">12 Reviews</label><br>
-                <label class="price">₹ {{product.price}} <strike class="dummy_price">₹ {{product.dummy_price}}</strike><br></label> 
+                <label class="price">₹ {{product.price}} <strike class="dummy_price">₹ {{product.dummy_price}}</strike>{% if not product.in_stock %}(Out of Stock){% endif %}<br></label> 
                 <p class="description">{{product.product_description}}</p>
                 
     

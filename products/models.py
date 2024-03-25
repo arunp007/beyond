@@ -36,7 +36,8 @@ class Product(BaseModel):
     product_description = models.TextField(max_length = 500)
     color = models.CharField(max_length = 100, null = True)
     size_variant = models.ManyToManyField(SizeVariant, blank = True)
-
+    in_stock = models.BooleanField(default = True)
+    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.product_name)
         super(Product, self).save(*args, **kwargs)

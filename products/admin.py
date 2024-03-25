@@ -8,9 +8,19 @@ class ProductImageAdmin(admin.StackedInline):
     model = ProductImage
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['category','product_name',  'color', 'price', 'product_description']
+    list_display = ('category','product_name',  'color', 'price', 'product_description', 'in_stock_display',)
+    list_filter = ('in_stock',)
+    search_fields = ('product_name', 'product_description',)
+    action = ['mark_as_out_of_stock']
     inlines = [ProductImageAdmin,]
     
+    def mark_as_out_of_stock(self, request, queryset):
+        queryset.update(in_stock = False)
+    mark_as_out_of_stock.short_description = "Mark selected products as out of stock"
+
+    def in_stock_display(self, obj):
+        return obj.in_stock
+    in_stock_display.boolean = True
 
 @admin.register(SizeVariant)
 
