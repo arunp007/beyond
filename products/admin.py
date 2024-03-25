@@ -9,7 +9,7 @@ class ProductImageAdmin(admin.StackedInline):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('category','product_name',  'color', 'price', 'product_description', 'in_stock_display',)
-    list_filter = ('in_stock',)
+    list_filter = ('in_stock', 'category',)
     search_fields = ('product_name', 'product_description',)
     action = ['mark_as_out_of_stock']
     inlines = [ProductImageAdmin,]
