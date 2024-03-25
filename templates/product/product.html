@@ -440,7 +440,7 @@
 
                           {% for size in size_variant %}
 
-                          <option value="{{size.size_name}}" name = "select_size" {% if size_name.selected %}selected_size{% endif %}>{{size.size_name}}</option>
+                          <option value="{{size.size_name}}" name = "select_size" {% if selected_size == size.size_name %} selected {% endif %}>{{size.size_name}}</option>
                           
                           {% endfor %}
                           
