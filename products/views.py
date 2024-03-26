@@ -37,6 +37,7 @@ def add_to_cart(request, uid):
             cart_item.save()
         
         return redirect(request.META.get('HTTP_REFERER'))
+        
     
     except Profile.DoesNotExist:
         return redirect('signup') 
