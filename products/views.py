@@ -1,18 +1,37 @@
+from venv import create
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from products.form import SearchForm
 from products.models import Product, Category, SizeVariant
 from accounts.models import *
+from.form import CustomizationForm
 
 def get_products(request, slug):
     try:
+        form = CustomizationForm()
         product = Product.objects.get(slug =  slug)
         size_variant = SizeVariant.objects.all()
-        return render(request, 'product/product.html', {'product': product, 'size_variant': size_variant})
+        return render(request, 'product/product.html', {'product': product, 'size_variant': size_variant, 'form': form}, )
 
     except Exception as e:
         print(e)
-        
+
+def customization(request):
+    user = request.user
+    if request.method == 'POST':
+        form = create(request.POST, instance=user)
+        if form.is_valid():
+            customization = form.save()
+            customization.user = request.user
+            customization.save()
+            if customization.zip_type == 'two_side_zip':
+                pass
+
+            return redirect(request.META.get('HTTP_REFERER'))
+    else:
+ 
+        return redirect(request.META.get('HTTP_REFERER'))
+
 
 def add_to_cart(request, uid):
     variant = request.GET.get('variant')

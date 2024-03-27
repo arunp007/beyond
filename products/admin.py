@@ -7,6 +7,9 @@ admin.site.register(Category)
 class ProductImageAdmin(admin.StackedInline):
     model = ProductImage
 
+class ProductCustomizationAdmin(admin.ModelAdmin):
+    list_display = ['id', 'nighty_length', 'sleeve_type', 'feeding_type', 'zip_type']
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('category','product_name',  'color', 'price', 'product_description', 'in_stock_display',)
     list_filter = ('in_stock', 'category',)
@@ -27,6 +30,8 @@ class ProductAdmin(admin.ModelAdmin):
 class SizeVariantAdmin(admin.ModelAdmin):
     list_display = ['size_name']
     model = SizeVariant
+
+admin.site.register(ProductCustomization, ProductCustomizationAdmin)
 
 admin.site.register(Product, ProductAdmin)
 

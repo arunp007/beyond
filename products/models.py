@@ -26,6 +26,60 @@ class Size(BaseModel):
 class Quantity(BaseModel):
     quantity = models.IntegerField()
 
+class ProductCustomization(models.Model):
+    Nighty_Length_choices = [
+        ('30', '30'),
+        ('31', '31'),
+        ('32', '32'),
+        ('33', '33'),
+        ('34', '34'),
+        ('35', '35'),
+        ('36', '36'),
+        ('37', '37'),
+        ('38', '38'),
+        ('39', '39'),
+        ('40', '40'),
+        ('41', '41'),
+        ('42', '42'),
+        ('43', '43'),
+        ('44', '44'),
+        ('45', '45'),
+        ('46', '46'),
+        ('47', '47'),
+        ('48', '48'),
+        ('49', '49'),
+        ('50', '50'),
+        ('51', '51'),
+        ('52', '52'),
+        ('53', '53'),
+        ('54', '54'),
+        ('55', '55'),
+        ('56', '56'),
+    ]
+
+    Sleeve_Type_Choices = [
+        ('Normal', 'Normal'),
+        ('With Sleeve', 'With Sleeve'),
+    ]
+
+    Feeding_Type_Choices = [
+        ('Feeding', 'Feeding'),
+        ('Non Feeding', 'Non Feeding'),
+    ]
+
+    Zip_Type_Choices = [
+        ('Two Side Zip', 'Two Side Zip'),
+        ('Without Zip', 'Without Zip '),
+    ]
+
+    nighty_length = models.IntegerField()
+    sleeve_type = models.CharField(max_length = 100)
+    feeding_type = models.CharField(max_length = 100)
+    zip_type = models.CharField(max_length = 100)
+
+    def __str__(self):
+        return f"Customization for Product Id: {self.id}"
+
 class Product(BaseModel):
     product_name = models.CharField(max_length = 100)
     slug = models.SlugField(unique = True, null = True, blank = True)

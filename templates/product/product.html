@@ -203,6 +203,19 @@
             margin-bottom: 20px;
         }
 
+        .custom-heading{
+            margin-left: -1px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        form{
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
         #add-to-cart{
             width: 310px;
             margin-top: 30px;
@@ -450,9 +463,17 @@
                     
                 </div>
 
+                <div class="form-row">
+                    <form method="post">
+                        <h6 class="custom-heading">Customization</h6>
+                        
+                        {{ form.as_p }}
+                    </form>
+                </div>
+
                 <a href="{% url 'add_to_cart' product.uid %}?variant={{selected_size}}" id="add-to-cart" class="btn btn-outline-dark">Add To Cart</a><br>
                 <a href="" id="buy-now" class="btn btn-dark">Buy Now</a><br>
-                <a href="" id="customize" class="btn btn-secondary"><span class="fa fa-scissors"></span> Customize</a><br>
+                <a href="{% url 'customization' %}" id="customize" class="btn btn-secondary"><span class="fa fa-scissors"></span> Customize</a><br>
 
                 
                     
