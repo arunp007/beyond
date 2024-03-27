@@ -15,3 +15,10 @@ class CustomizationForm(forms.ModelForm):
             'feeding_type': forms.Select(choices = ProductCustomization.Feeding_Type_Choices, attrs = {'class': 'form-control'}),
             'zip_type': forms.Select(choices = ProductCustomization.Zip_Type_Choices, attrs = {'class': 'form-control'}),
         }
+
+        labels = {
+            'nighty_length': 'Nighty Length',
+            'sleeve_type': 'Sleeve Type',
+            'feeding_type': 'Feeding Type',
+            'zip_type': 'Zip Type',
+        }
