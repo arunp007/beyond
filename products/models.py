@@ -73,9 +73,9 @@ class ProductCustomization(models.Model):
     ]
 
     nighty_length = models.IntegerField()
-    sleeve_type = models.CharField(max_length = 100)
-    feeding_type = models.CharField(max_length = 100)
-    zip_type = models.CharField(max_length = 100)
+    sleeve_type = models.CharField(max_length = 100, blank=False, null=False)
+    feeding_type = models.CharField(max_length = 100, blank=False, null=False)
+    zip_type = models.CharField(max_length = 100, blank=False, null=False)
 
     def __str__(self):
         return f"Customization for Product Id: {self.id}"

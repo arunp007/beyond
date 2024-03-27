@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Product, ProductImage
+from products.form import CustomizationForm
+from.models import ProductCustomization
 from.models import *
 
 admin.site.register(Category)
@@ -8,6 +10,7 @@ class ProductImageAdmin(admin.StackedInline):
     model = ProductImage
 
 class ProductCustomizationAdmin(admin.ModelAdmin):
+    form = CustomizationForm
     list_display = ['id', 'nighty_length', 'sleeve_type', 'feeding_type', 'zip_type']
 
 class ProductAdmin(admin.ModelAdmin):
