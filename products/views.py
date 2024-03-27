@@ -19,7 +19,7 @@ def get_products(request, slug):
 def customization(request):
     user = request.user
     if request.method == 'POST':
-        form = create(request.POST, instance=user)
+        form = CustomizationForm.create(request.POST, instance=user)
         if form.is_valid():
             customization = form.save()
             customization.user = request.user
