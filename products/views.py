@@ -9,16 +9,8 @@ from accounts.models import *
 
 def get_products(request, slug):
     try:
-        if request.method == 'POST':
-            size = request.POST.get('size')
-            quantity = request.POST.get('quantity')
-            size = Size(size = size)
-            size.save()
-            quantity = Quantity(quantity = quantity)
-            quantity.save()
-
-            product = Product.objects.get(slug =  slug)
-            size_variant = SizeVariant.objects.all()
+        product = Product.objects.get(slug =  slug)
+        size_variant = SizeVariant.objects.all()
             
         return render(request, 'product/product.html', {'product': product, 'size_variant': size_variant}, )
 
