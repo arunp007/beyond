@@ -1,0 +1,443 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>Privacy Policy</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .logo{
+            width: 220px;
+            height: 70px;
+            margin-left: 20px;
+            margin-right: -10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px){
+            .logo{
+                width: 170px;
+                height: 60px;
+            }
+        }
+
+        .navbar-brand{
+            font-size: 38px;
+            font-weight: bolder;
+            font-family:'Courier New', Courier, monospace;
+            margin-right: 5px;
+            margin-left: -30px;
+        }
+
+        .fa-badge{
+            color: black;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 24px;
+        }
+
+        .badge:after{
+            content:attr(value);
+            font-size:12px;
+            color: #fff;
+            background: red;
+            border-radius:50%;
+            padding: 0 5px;
+            position:relative;
+            left:-8px;
+            top:-10px;
+            opacity:0.9;
+        }
+
+        .fa-search{
+            color: black;
+            margin-left: 15px;
+            font-size: 24px;
+        }
+
+        .navbar-toggler{
+            border: none;
+            color: black !important;
+        }
+
+        .navbar-nav{
+            margin-left: 70px;
+            margin-bottom: 20px;
+        }
+
+        .nav-item{
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 18px;
+        }
+
+        .account-link{
+            color: black !important;
+            text-decoration: none !important;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-user-circle{
+            font-size: 28px;
+        }
+
+        .btn-dark{
+            margin-right: 10px;
+            width: 110px;
+        }
+
+        .btn-outline-dark{
+            width: 110px;
+            margin-right: 5px;
+        }
+
+        .btn-outline-dark{
+            background-color: white !important;
+            color: black !important;
+            border: solid black;
+        }
+
+        #container{
+            margin-top: 160px;
+            margin-bottom: 100px;
+        }
+
+        @media (max-width: 768px){
+            #container{
+                margin-top: 150px;
+                margin-bottom: 100px;
+            }
+        }
+
+        .heading{
+            font-size: 40px !important;
+            font-weight: bolder;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px){
+            .heading{
+                font-size: 25px !important;
+                font-weight: bolder;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+        }
+
+        .description{
+            font-size: 18px;
+            color: black;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .description2{
+            font-size: 16px;
+            color: black;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px){
+
+            .description{
+                font-size: 14px;
+                color: black;
+                font-family: Roboto, sans-serif;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .description2{
+                font-size: 14px;
+                color: black;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .sub-title{
+            font-size: 20px;
+            font-weight: bolder;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+
+        #footer{
+            background-color: #efeded;
+            padding-bottom: 50px;
+        }
+
+        .footer-heading{
+            margin-top: 70px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo{
+            color: #666666;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            margin-bottom: 5px;
+        }
+
+        .footer-description{
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .footer-navigation{
+            color: #666666;
+            text-decoration: none !important;
+        }
+
+        .footer-navigation:hover{
+            color: black;
+        }
+
+        .fa-whatsapp{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-right: 10px;
+        }
+
+        .fa-whatsapp:hover{
+            color: black;
+        }
+
+        .fa-instagram{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-instagram:hover{
+            color: black;
+        }
+
+        .fa-facebook{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-facebook:hover{
+            color: black;
+        }
+
+        .fa-youtube{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-youtube:hover{
+            color: black;
+        }
+
+        hr{
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .fa-copyright{
+            font-size: 15px;
+            font-weight: light !important;
+            color: black;
+            margin-left: 90px;
+            margin-bottom: 20px !important;
+        }
+
+        .footer-icon{
+            width: 120px;
+            height: 25px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 5px !important;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
+        <a href="{% url 'search' %}"><span class="fa fa-search"></span></a>
+        <a href="{% url 'cart' %}"><i class="fa badge fa-badge" value="{{ request.user.profile.get_cart_count }}">&#xf07a;</i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Products
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item js-scroll-trigger" href="{% url 'maternity' %}">Maternity Nighties</a>
+                <a class="dropdown-item js-scroll-trigger" href="{% url 'kaftan' %}">Kaftan Nighties</a>
+                <a class="dropdown-item js-scroll-trigger" href="{% url 'threebyfourth_sleeve' %}">3/4 Sleeve Nighties</a>
+              </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'about_us' %}">About Us</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'contact_us' %}">Contact Us</a>
+            </li>
+          </ul>
+          
+          <form class="form-inline my-2 my-lg-0">
+            <a href="" class="account-link js-scroll-trigger"><span class="fa fa-user-circle"></span></a>
+
+            <a class="btn btn-dark js-scroll-trigger" href="{% url 'signup' %}">Register</a>
+    
+            <a class="btn btn-outline-dark js-scroll-trigger" href="{% url 'login' %}">Log in</a>
+           
+          </form>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-12">
+                <h6 class="heading">PRIVACY POLICY</h6>
+            </div>
+
+            <div class="col-xs-2 col-lg-2"></div>
+
+            <div class="col-xs-8 col-lg-8">
+                <p class="description">This Privacy Policy describes how Beyond Your Own Comfort Online Nighty Store ("Beyond Your Own Comfort Online Nighty Store", "we", "us", or "our") collects, uses, and protects the personal information you provide when using our website or making a purchase from our online store.</p>
+                
+                <h6 class="sub-title">1. Information We Collect</h6>
+
+                <h6 class="sub-title">1.1 Personal Information</h6>
+                <p class="description">When you visit Beyond Your Own Comfort Online Nighty Store or make a purchase, we may collect personal information, such as your name, email address, shipping address, billing address, phone number, and payment information.</p>
+                
+                <h6 class="sub-title">2. Use of Information</h6>
+
+                <h6 class="sub-title">2.1 Personalization</h6>
+                <p class="description">We use the information we collect to personalize your shopping experience.</p>
+                
+                <h6 class="sub-title">2.2 Order Fulfillment</h6>
+                <p class="description">We use your personal information to process and fulfill your orders, communicate with you about your orders, and provide customer support.</p>
+                
+                <h6 class="sub-title">3. Data Security</h6>
+
+                <h6 class="sub-title">3.1 Security Measures</h6>
+                <p class="description">We take reasonable measures to protect the security of your personal information and prevent unauthorized access, disclosure, alteration, or destruction.</p>
+
+                <h6 class="sub-title">3.2 SSL Encryption</h6>
+                <p class="description">We use Secure Sockets Layer (SSL) encryption technology to encrypt the transmission of sensitive information, such as payment details, during checkout.</p>
+                
+                <h6 class="sub-title">4. Third-Party Services</h6>
+
+                <h6 class="sub-title">4.1 Third-Party Links</h6>
+                <p class="description">Beyond Your Own Comfort Online Nighty Store may not contain links to third-party websites or services that are not owned or controlled by us. We are not responsible for the privacy practices or content of these third-party sites. We encourage you to review the privacy policies of these sites before providing any personal information.</p>
+                
+                <h6 class="sub-title">5. Children's Privacy</h6>
+                <p class="description">Beyond Your Own Comfort Online Nighty Store is not intended for children under the age of 18. We do not knowingly collect personal information from children under 18.</p>
+            
+                <h6 class="sub-title">6. Changes to this Privacy Policy</h6>
+                <p class="description">We reserve the right to update or modify this Privacy Policy at any time without prior notice. Any changes will be effective immediately upon posting the updated policy on our website. We encourage you to review this Privacy Policy periodically for updates.</p>
+
+                <h6 class="sub-title">7. Contact Us</h6>
+                <p class="description">If you have any questions or concerns about our Shipping Policy, please contact us at beyondyourown007@gmail.com or +918547639106.</p>
+
+            </div>
+
+            <div class="col-xs-2 col-lg-2"></div>
+        </div>
+    </div>
+
+    
+    
+
+    
+    
+    
+    <div class="container-fluid" id="footer">
+        <div class="row">
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-3 col-lg-3">
+                <h6 class="footer-heading">Let's get in touch</h6>
+                <h5 class="footer-logo">BEYOND</h5>
+                <p class="footer-description"> Near PHC, Kodamthuruth<br>Kuthiathod P.O Cherthala<br>Pin 688533</p>
+                <a href="" class="footer-navigation">+918547639106</a><br>
+                <a href="" class="footer-navigation">beyondyourown007@gmail.com</a><br>
+                <a href="" class="footer-navigation"><span class="fa fa-whatsapp"></span></a><a href=""><span class="fa fa-instagram"></span></a> <a href=""><span class="fa fa-facebook"></span></a> <a href=""><span class="fa fa-youtube"></span></a>
+                
+
+
+            </div>
+            <div class="col-xs-2 col-lg-2">
+                <h6 class="footer-heading">Navigation</h6>
+                <a href="{% url 'maternity' %}" class="footer-navigation">Maternity Nighties</a><br>
+                <a href="{% url 'kaftan' %}" class="footer-navigation">Kaffan Nighties</a><br>
+                <a href="{% url 'threebyfourth_sleeve' %}" class="footer-navigation">3/4 Sleeve Nighties</a><br>
+            </div>
+            <div class="col-xs-3 col-lg-3">
+                <h6 class="footer-heading">Information</h6>
+                <a href="{% url 'about_us' %}" class="footer-navigation">About Us</a><br>
+                <a href="" class="footer-navigation">Order Tracking</a><br>
+                <a href="{% url 'terms_and_conditions' %}" class="footer-navigation">Terms And Conditions</a><br>
+                <a href="{% url 'return_and_refund' %}" class="footer-navigation">Return And Refund Policy</a><br>
+                <a href="{% url 'privacy_policy' %}" class="footer-navigation">Privacy Policy</a><br>
+                <a href="{% url 'shipping_policy' %}" class="footer-navigation">Shipping Policy</a><br>
+                <a href="{% url 'contact_us' %}" class="footer-navigation">Contact Us</a><br>
+            </div>
+
+            <div class="col-xs-2 col-lg-2"></div>
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-12 col-lg-12">
+                <hr>
+            </div>
+
+            <div class="col-xs-6 col-lg-6">
+                <span class="fa fa-copyright"> By BEYOND 2024</span>
+            </div>
+
+            <div class="col-xs-6 col-lg-6">
+                <img src="{% static 'images/footer_icons.png' %}" class="footer-icon" alt="">
+            </div>
+            
+        </div>
+    </div>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function(){
+          $(".js-scroll-trigger").click(function(){
+            $(".navbar-collapse").collapse('hide');
+          });
+        });
+    </script>
+
+</body>
+</html>

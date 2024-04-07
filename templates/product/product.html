@@ -1,0 +1,588 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>{{product.product_name}}</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .logo{
+            width: 220px;
+            height: 70px;
+            margin-left: 20px;
+            margin-right: -10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px){
+            .logo{
+                width: 170px;
+                height: 60px;
+            }
+        }
+
+        .navbar-brand{
+            font-size: 38px;
+            font-weight: bolder;
+            font-family:'Courier New', Courier, monospace;
+            margin-right: 5px;
+            margin-left: -30px;
+        }
+
+        .fa-badge{
+            color: black;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 24px;
+        }
+
+        .badge:after{
+            content:attr(value);
+            font-size:12px;
+            color: #fff;
+            background: red;
+            border-radius:50%;
+            padding: 0 5px;
+            position:relative;
+            left:-8px;
+            top:-10px;
+            opacity:0.9;
+        }
+
+        .fa-search{
+            color: black;
+            margin-left: 15px;
+            font-size: 24px;
+        }
+
+        .navbar-toggler{
+            border: none;
+            color: black !important;
+        }
+
+        .navbar-nav{
+            margin-left: 70px;
+            margin-bottom: 20px;
+        }
+
+        .nav-item{
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 18px;
+        }
+
+        .account-link{
+            color: black !important;
+            text-decoration: none !important;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-user-circle{
+            font-size: 28px;
+        }
+
+        .btn-dark{
+            margin-right: 10px;
+            width: 110px;
+        }
+
+        .btn-outline-dark{
+            width: 110px;
+            margin-right: 10px;
+        }
+
+        .btn-outline-dark{
+            background-color: white !important;
+            color: black !important;
+            border: solid black;
+        }
+
+        #container{
+            margin-top: 130px;
+            margin-bottom: 130px;
+        }
+
+        .carousel{
+            margin-top: 10px;
+            margin-bottom: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        h1{
+            font-size: 28px;
+            font-weight: light;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .fa-star{
+            color: darkorange;
+            font-size: 18px;
+            margin-left: 1px;
+            margin-bottom: 30px;
+        }
+
+        .review{
+            margin-left: 10px;
+        }
+
+        .price{
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: black;
+            margin-left: 13px;
+        }
+
+        .dummy_price{
+            color: gray;
+            margin-left: 10px;
+        }
+
+        .out_off_stock{
+            color: red;
+            margin-left: 13px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .description{
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            color: grey;
+        }
+
+
+        .quantity{
+            margin-top: 30px !important;
+            font-weight: bold;
+            margin-left: 1px;
+            margin-bottom: 20px;
+        }
+
+        #quantity{
+            margin-left: 1px;
+        }
+
+        .size{
+            margin-left: 25px;
+            margin-top: 30px !important;
+            font-weight: bold;
+        }
+
+        #inputSize{
+            margin-left: 25px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .custom-heading{
+            margin-left: -1px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        form{
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .label{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-weight: bolder;
+        }
+
+        #select_box{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #add-to-cart{
+            width: 310px;
+            margin-top: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        #add-to-cart:hover{
+            background-color: black !important;
+            color: white !important;
+        }
+
+        #buy-now{
+            width: 310px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        #customize{
+            width: 310px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+
+        }
+
+        .fa-scissors{
+            font-weight: bolder;
+            margin-right: 10px;
+        }
+        
+
+        #footer{
+            background-color: #efeded;
+            padding-bottom: 50px;
+        }
+
+        .footer-heading{
+            margin-top: 70px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo{
+            color: #666666;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            margin-bottom: 5px;
+        }
+
+        .footer-description{
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .footer-navigation{
+            color: #666666;
+            text-decoration: none !important;
+        }
+
+        .footer-navigation:hover{
+            color: black;
+        }
+
+        .fa-whatsapp{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-right: 10px;
+        }
+
+        .fa-whatsapp:hover{
+            color: black;
+        }
+
+        .fa-instagram{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-instagram:hover{
+            color: black;
+        }
+
+        .fa-facebook{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-facebook:hover{
+            color: black;
+        }
+
+        .fa-youtube{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-youtube:hover{
+            color: black;
+        }
+
+        hr{
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .fa-copyright{
+            font-size: 15px;
+            font-weight: light !important;
+            color: black;
+            margin-left: 90px;
+            margin-bottom: 20px;
+        }
+
+        .footer-icon{
+            width: 120px;
+            height: 25px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 5px !important;
+            margin-bottom: 20px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
+        <a href="{% url 'search' %}"><span class="fa fa-search"></span></a>
+        <a href="{% url 'cart' %}"><i class="fa badge fa-badge" value="{{ request.user.profile.get_cart_count }}">&#xf07a;</i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Products
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item js-scroll-trigger" href="{% url 'maternity' %}">Maternity Nighties</a>
+                <a class="dropdown-item js-scroll-trigger" href="{% url 'kaftan' %}">Kaftan Nighties</a>
+                <a class="dropdown-item js-scroll-trigger" href="{% url 'threebyfourth_sleeve' %}">3/4 Sleeve Nighties</a>
+              </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'about_us' %}">About Us</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'contact_us' %}">Contact Us</a>
+            </li>
+          </ul>
+          
+          <form class="form-inline my-2 my-lg-0">
+            <a href="" class="account-link js-scroll-trigger"><span class="fa fa-user-circle"></span></a>
+
+            <a class="btn btn-dark js-scroll-trigger" href="{% url 'signup' %}">Register</a>
+    
+            <a class="btn btn-outline-dark js-scroll-trigger" href="{% url 'login' %}">Log in</a>
+           
+          </form>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="container">
+        <div class="row">
+
+            <div class="col-xs-6 col-lg-6">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+
+                        {% for image in product.product_images.all %}
+
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="/media/{{image.image}}" class="d-block w-100" alt="...">
+                        </div>
+                        
+                        {% endfor %}
+                        
+                    </div>
+                   <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-lg-6">
+                <h1>{{product.product_name}}</h1>
+                <span class="fa fa-star" style="margin-left: 12px;"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> <label class="review">12 Reviews</label><br>
+                <label class="price">₹ {{product.price}} <strike class="dummy_price">₹ {{product.dummy_price}}</strike> {% if not product.in_stock %} <label class="out_off_stock">(Out of Stock)</label> {% endif %}<br></label> 
+                <p class="description">{{product.product_description}}</p>
+                
+    
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quantity" class="quantity">Quantity:</label>
+                            
+                            <select name="quantity" class="form-control" id="quantity">
+
+                                <option value="" value="">Select</option>
+                                
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="size" class="size">Size:</label>
+                            <select name="size" id="inputSize" class="form-control">
+                                
+                                <option value="" value="">Select Size</option>
+                                
+                                {% for size in size_variant %}
+
+                                <option value="{{size.size_name}}">{{size.size_name}}</option>
+
+                                {% endfor %}
+                              
+                            </select>
+                            
+                        </div>
+                        
+                    </div>
+                </form>
+                
+
+                <a href="{% url 'add_to_cart' product.uid %}" id="add-to-cart" type="" class="btn btn-outline-dark">Add To Cart</a><br>
+                <a href="" id="buy-now" class="btn btn-dark">Buy Now</a><br>
+                <a href="{% url 'customization' %}" id="customize" class="btn btn-secondary"><span class="fa fa-scissors"></span> Customize</a><br>
+
+                
+                    
+             
+
+                   
+                
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    
+    
+    
+    <div class="container-fluid" id="footer">
+        <div class="row">
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-3 col-lg-3">
+                <h6 class="footer-heading">Let's get in touch</h6>
+                <h5 class="footer-logo">BEYOND</h5>
+                <p class="footer-description"> Near PHC, Kodamthuruth<br>Kuthiathod P.O Cherthala<br>Pin 688533</p>
+                <a href="" class="footer-navigation">+918547639106</a><br>
+                <a href="" class="footer-navigation">beyondyourown007@gmail.com</a><br>
+                <a href="" class="footer-navigation"><span class="fa fa-whatsapp"></span></a><a href=""><span class="fa fa-instagram"></span></a> <a href=""><span class="fa fa-facebook"></span></a> <a href=""><span class="fa fa-youtube"></span></a>
+                
+
+
+            </div>
+            <div class="col-xs-2 col-lg-2">
+                <h6 class="footer-heading">Navigation</h6>
+                <a href="{% url 'maternity' %}" class="footer-navigation">Maternity Nighties</a><br>
+                <a href="{% url 'kaftan' %}" class="footer-navigation">Kaffan Nighties</a><br>
+                <a href="{% url 'threebyfourth_sleeve' %}" class="footer-navigation">3/4 Sleeve Nighties</a><br>
+            </div>
+            <div class="col-xs-3 col-lg-3">
+                <h6 class="footer-heading">Information</h6>
+                <a href="{% url 'about_us' %}" class="footer-navigation">About Us</a><br>
+                <a href="" class="footer-navigation">Order Tracking</a><br>
+                <a href="{% url 'terms_and_conditions' %}" class="footer-navigation">Terms And Conditions</a><br>
+                <a href="{% url 'return_and_refund' %}" class="footer-navigation">Return And Refund Policy</a><br>
+                <a href="{% url 'privacy_policy' %}" class="footer-navigation">Privacy Policy</a><br>
+                <a href="{% url 'shipping_policy' %}" class="footer-navigation">Shipping Policy</a><br>
+                <a href="{% url 'contact_us' %}" class="footer-navigation">Contact Us</a><br>
+            </div>
+
+            <div class="col-xs-2 col-lg-2"></div>
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-12 col-lg-12">
+                <hr>
+            </div>
+
+            <div class="col-xs-6 col-lg-6">
+                <span class="fa fa-copyright"> By BEYOND 2024</span>
+            </div>
+
+            <div class="col-xs-6 col-lg-6">
+                <img src="{% static 'images/footer_icons.png' %}" class="footer-icon" alt="">
+            </div>
+            
+        </div>
+    </div>
+
+
+    
+
+
+    <script>
+        const btnMinus = document.getElementById('minus')
+        const quantityInput = document.getElementById('quantity')
+        const btnPlus = document.getElementById('plus')
+
+        function minus(){
+            currentValue = parseInt(quantityInput.value)
+
+            if(currentValue > 1){
+                quantityInput.value = currentValue - 1;
+            }
+        }
+
+        function plus(){
+            currentValue = parseInt(quantityInput.value)
+                quantityInput.value = currentValue + 1;
+        }
+    </script>
+
+
+
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function(){
+          $(".js-scroll-trigger").click(function(){
+            $(".navbar-collapse").collapse('hide');
+          });
+        });
+    </script>
+
+
+</body>
+</html>

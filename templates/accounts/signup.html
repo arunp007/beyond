@@ -1,0 +1,397 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+       .logo{
+            width: 220px !important;
+            height: 70px !important;
+            margin-left: 20px !important;
+            margin-right: -10px !important;
+            margin-top: 10px !important;
+            margin-bottom: 10px !important;
+        }
+
+        @media (max-width: 768px){
+            .logo{
+                width: 160px !important;
+                height: 60px !important;
+            }
+        }
+
+        .navbar-brand{
+            font-weight: bolder;
+            font-family:'Courier New', Courier, monospace;
+            margin-right: 5px !important;
+            margin-left: -30px !important;
+        }
+
+        .fa-badge{
+            color: black;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 24px !important;
+        }
+
+        .badge:after{
+            content:attr(value);
+            font-size:12px;
+            color: #fff;
+            background: red;
+            border-radius:50%;
+            padding: 0 5px;
+            position:relative;
+            left:-8px;
+            top:-10px;
+            opacity:0.9;
+        }
+
+        .fa-search{
+            color: black !important;
+            margin-left: 15px !important;
+            font-size: 24px !important;
+        }
+
+        .navbar-toggler{
+            border: none !important;
+            color: black !important;
+        }
+
+        .navbar-nav{
+            margin-left: 70px !important;
+            margin-bottom: 20px !important;
+        }
+
+        .nav-item{
+            margin-left: 5px !important;
+            margin-right: 5px !important;
+            font-size: 18px !important;
+        }
+
+        .account-link{
+            color: black !important;
+            text-decoration: none !important;
+            margin-left: 5px !important;
+            margin-right: 5px !important;
+        }
+
+        .fa-user-circle{
+            font-size: 28px !important;
+        }
+
+        .btn-dark{
+            margin-right: 10px !important;
+            width: 110px !important;
+        }
+
+        .btn-outline-dark{
+            background-color: white !important;
+            color: black !important;
+            border: solid black !important;
+            width: 110px !important;
+        }
+
+        #container{
+            margin-top: 150px;
+            margin-bottom: 150px;
+        }
+
+        form{
+            margin-top: 50px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 50px;
+            width: 320px !important;
+        }
+
+        .heading{
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-size: 25px;
+        }
+
+        .form-control{
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus{
+            border-color: black !important;
+            box-shadow: none;
+        }
+
+        .description{
+            color:#666666;
+
+        }
+        
+        #button{
+            margin-top: 30px !important;
+            width: 320px !important; 
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display: block !important;
+            border-radius: 0 !important;
+        }
+
+        .btn-outline-primary{
+            color: black !important;
+            border-color: black !important;
+            border-radius: 0 !important;
+            width: 320px;
+            margin-top: 20px;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display: block !important;
+        }
+
+        .btn-outline-primary:hover{
+            background-color: white !important;
+            box-shadow: none !important;
+        }
+
+        #footer{
+            background-color: #efeded;
+            padding-bottom: 50px;
+        }
+
+        .footer-heading{
+            margin-top: 70px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo{
+            color: #666666;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            margin-bottom: 5px;
+        }
+
+        .footer-description{
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .footer-navigation{
+            color: #666666;
+            text-decoration: none !important;
+        }
+
+        .footer-navigation:hover{
+            color: black;
+        }
+
+        .fa-whatsapp{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-right: 10px;
+        }
+
+        .fa-whatsapp:hover{
+            color: black;
+        }
+
+        .fa-instagram{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-instagram:hover{
+            color: black;
+        }
+
+        .fa-facebook{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-facebook:hover{
+            color: black;
+        }
+
+        .fa-youtube{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-youtube:hover{
+            color: black;
+        }
+
+        hr{
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .fa-copyright{
+            font-size: 15px;
+            font-weight: light !important;
+            color: black;
+            margin-left: 90px;
+            margin-bottom: 20px;
+        }
+
+        .footer-icon{
+            width: 120px;
+            height: 25px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
+        <a href="{% url 'search' %}"><span class="fa fa-search"></span></a>
+        <a href="{% url 'cart' %}"><i class="fa badge fa-badge" value="{{ request.user.profile.get_cart_count }}">&#xf07a;</i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Products
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item js-scroll-trigger" href="{% url 'maternity' %}">Maternity Nighties</a>
+                        <a class="dropdown-item js-scroll-trigger" href="{% url 'kaftan' %}">Kaftan Nighties</a>
+                        <a class="dropdown-item js-scroll-trigger" href="{% url 'threebyfourth_sleeve' %}">3/4 Sleeve Nighties</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'about_us' %}">About Us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'contact_us' %}">Contact Us</a>
+                </li>
+            </ul>
+          
+            <form class="form-inline my-2 my-lg-0">
+                <a href="" class="account-link js-scroll-trigger"><span class="fa fa-user-circle"></span></a>
+
+                <a class="btn btn-dark js-scroll-trigger" href="{% url 'signup' %}">Register</a>
+    
+                <a class="btn btn-outline-dark js-scroll-trigger" href="{% url 'login' %}">Log in</a>
+           
+            </form>
+        </div>
+    </nav>
+
+    
+    <div class="container-fluid" id="container">
+        <div class="row">
+            <div class="col-xs-4 col-lg-4"></div>
+            <div class="col-xs-3 col-lg-3">
+                <form method="post">
+                    {% csrf_token %}
+                    <h4 class="heading">Register</h4>
+                    {% include "base/alert.html" %}
+                    <input type="text" class="form-control" name="first_name" placeholder="First Name" required autocomplete="off">
+                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" required autocomplete="off">
+                    <input type="text" class="form-control" name="email" placeholder="Email" required autocomplete="off">
+                    <input type="password" class="form-control" name="password" placeholder="Password"  required autocomplete="off">
+                    <p class="description">Sign up for early Sale access plus new arrivals, trends and promotions.</p>
+                    <button type="submit" id="button" class="btn btn-dark">Sign In</button>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary">Log In</a>
+                </form>
+            </div>
+
+            <div class="col-xs-5 col-lg-5"></div>
+        </div>
+    </div>
+    
+    <div class="container-fluid" id="footer">
+        <div class="row">
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-3 col-lg-3">
+                <h6 class="footer-heading">Let's get in touch</h6>
+                <h5 class="footer-logo">BEYOND</h5>
+                <p class="footer-description"> Near PHC, Kodamthuruth<br>Kuthiathod P.O Cherthala<br>Pin 688533</p>
+                <a href="" class="footer-navigation">+918547639106</a><br>
+                <a href="" class="footer-navigation">beyondyourown007@gmail.com</a><br>
+                <a href="" class="footer-navigation"><span class="fa fa-whatsapp"></span></a><a href=""><span class="fa fa-instagram"></span></a> <a href=""><span class="fa fa-facebook"></span></a> <a href=""><span class="fa fa-youtube"></span></a>
+                
+
+
+            </div>
+            <div class="col-xs-2 col-lg-2">
+                <h6 class="footer-heading">Navigation</h6>
+                <a href="{% url 'maternity' %}" class="footer-navigation">Maternity Nighties</a><br>
+                <a href="{% url 'kaftan' %}" class="footer-navigation">Kaffan Nighties</a><br>
+                <a href="{% url 'threebyfourth_sleeve' %}" class="footer-navigation">3/4 Sleeve Nighties</a><br>
+            </div>
+            <div class="col-xs-3 col-lg-3">
+                <h6 class="footer-heading">Information</h6>
+                <a href="{% url 'about_us' %}" class="footer-navigation">About Us</a><br>
+                <a href="" class="footer-navigation">Order Tracking</a><br>
+                <a href="{% url 'terms_and_conditions' %}" class="footer-navigation">Terms And Conditions</a><br>
+                <a href="{% url 'return_and_refund' %}" class="footer-navigation">Return And Refund Policy</a><br>
+                <a href="{% url 'privacy_policy' %}" class="footer-navigation">Privacy Policy</a><br>
+                <a href="{% url 'shipping_policy' %}" class="footer-navigation">Shipping Policy</a><br>
+                <a href="{% url 'contact_us' %}" class="footer-navigation">Contact Us</a><br>
+            </div>
+
+            <div class="col-xs-2 col-lg-2"></div>
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-12 col-lg-12">
+                <hr>
+            </div>
+
+            <div class="col-xs-6 col-lg-6">
+                <span class="fa fa-copyright"> By BEYOND 2024</span>
+            </div>
+
+            <div class="col-xs-6 col-lg-6">
+                <img src="{% static 'images/footer_icons.png' %}" class="footer-icon" alt="">
+            </div>
+            
+        </div>
+    </div>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+          $(".js-scroll-trigger").click(function(){
+            $(".navbar-collapse").collapse('hide');
+          });
+        });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,750 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>Home</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .logo{
+            width: 220px;
+            height: 70px;
+            margin-left: 20px;
+            margin-right: -10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px){
+            .logo{
+                width: 170px;
+                height: 60px;
+            }
+        }
+
+        .navbar-brand{
+            font-size: 38px;
+            font-weight: bolder;
+            font-family:'Courier New', Courier, monospace;
+            margin-right: 5px;
+            margin-left: -30px;
+        }
+
+        .fa-badge{
+            color: black;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 24px;
+        }
+
+        .badge:after{
+            content:attr(value);
+            font-size:12px;
+            color: #fff;
+            background: red;
+            border-radius:50%;
+            padding: 0 5px;
+            position:relative;
+            left:-8px;
+            top:-10px;
+            opacity:0.9;
+        }
+
+        .fa-search{
+            color: black;
+            margin-left: 15px;
+            font-size: 24px;
+        }
+
+        .navbar-toggler{
+            border: none;
+            color: black !important;
+        }
+
+        .navbar-nav{
+            margin-left: 70px;
+            margin-bottom: 20px;
+        }
+
+        .nav-item{
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 18px;
+        }
+
+        .account-link{
+            color: black !important;
+            text-decoration: none !important;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-user-circle{
+            font-size: 28px;
+        }
+
+        .btn-dark{
+            margin-right: 10px;
+            width: 110px;
+        }
+
+        .btn-outline-dark{
+            width: 110px;
+            margin-right: 5px;
+        }
+
+        .btn-outline-dark{
+            background-color: white !important;
+            color: black !important;
+            border: solid black;
+        }
+
+        #container{
+            padding-top: 102px;
+            padding-bottom: 150px;
+        }
+
+        #carousel-image{
+            height: 580px;
+            margin-top: 67px;
+        }
+
+        @media(max-width: 768px){
+            #carousel-image{
+                height: 300px;
+                margin-top: 56px;
+            }
+        }
+
+        .carousel{
+            margin-bottom: 130px !important;
+        }
+        
+        .grid{
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            width: 300px;
+            background-color: rgb(191, 191, 192);
+        }
+
+        .grid:hover{
+            background-color: black;
+        }
+
+        .grid-title{
+            font-size: 17px;
+            color: white;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-bottom: 10px;
+            padding-top: 90px;
+            margin-left: 30px;
+            text-shadow: 1px 1px black;
+        }
+
+        .grid-title2{
+            font-size: 23px;
+            color: white;
+            font-weight: bolder;
+            margin-bottom: 20px;
+            margin-left: 30px;
+            text-shadow: 1px 1px black;
+        }
+
+        .btn-primary{
+            background-color: black !important;
+            color: white;
+            border-radius: 0px;
+            border-color: black !important;
+            width: 180px;
+            font-weight: bolder;
+            margin-left: 30px;
+        }
+
+        .btn-primary:hover{
+            background-color: rgba(109, 110, 110, 0.2) !important;
+            border-color: white !important;
+        }
+
+        .btn-primary:focus{
+            box-shadow: none !important;
+        }
+
+        .sub-title{
+            font-size: 19px;
+            color: #666666;
+            font-weight: bolder;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-top: 130px !important;
+            text-align: center;
+        }
+
+        .main-title{
+            font-size: 28px;
+            font-weight: bolder;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .carousel{
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+
+        #carousel-control-prev{
+            background-color: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            top: 50%;
+            transform: translateY(-70%);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-control-prev,
+            .carousel-control-next {
+            display: none !important;
+            }
+        }
+
+        #carousel-control-next{
+            background-color: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .card{
+            width: 300px !important;
+            margin-left: 58px;
+            margin-right: 10px;
+            border: 0px;
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+            border-radius: 0px !important;
+            
+        }
+
+        .card-img-top{
+            height: 300px !important;
+            border-radius: 0px !important;
+        }
+
+        .link{
+            color:black !important;
+            text-decoration: none !important;
+        }
+
+        .link:hover{
+            color: #666666 !important;
+        }
+
+        .card-title{
+            font-size: 17px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .card-price{
+            font-size: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: black;
+        }
+
+        .dummy-price{
+            color:#666666;
+            margin-left: 10px;
+        }
+
+        /* image hover zoom in without overflow property */
+
+        .card-image{
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .card-image .card-img-top{
+            transition: transform .5s ease;
+        }
+
+        .card-image:hover .card-img-top{
+            transform: scale(1.5);
+        }
+
+        /* image hover zoom in without overflow property end */
+        
+        @media(max-width: 768px){
+            .card{
+                width: 160px !important;
+                margin-left: 10px !important;
+                margin-right: 10px !important;
+            }
+
+            .card-img-top{
+                width: 160px !important;
+                height: 300px !important;
+            }
+
+            .card-title{
+                font-size: 11px;
+            }
+        }
+
+        
+
+        .btn-warning{
+            background-color: black !important;
+            color: white !important;
+            width: 310px;
+            height: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border-radius: 0;
+            border: 0;
+            border-color: 0 !important;
+            padding-top: 10px !important;
+            padding-bottom: 38px !important;
+            font-weight: bolder;
+            margin-top: -140px !important;
+        }
+
+        .btn-warning:focus{
+            box-shadow: none !important;
+        }
+        
+        .btn-warning:hover{
+            background-color: rgba(246, 244, 244, 0.3) !important;
+            color: black !important;
+            border: 1px solid;
+        }
+
+        #footer{
+            background-color: #efeded;
+            padding-bottom: 50px;
+        }
+
+        .footer-heading{
+            margin-top: 70px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo{
+            color: #666666;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            margin-bottom: 5px;
+        }
+
+        .footer-description{
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .footer-navigation{
+            color: #666666;
+            text-decoration: none !important;
+        }
+
+        .footer-navigation:hover{
+            color: black;
+        }
+
+        .fa-whatsapp{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-right: 10px;
+        }
+
+        .fa-whatsapp:hover{
+            color: black;
+        }
+
+        .fa-instagram{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-instagram:hover{
+            color: black;
+        }
+
+        .fa-facebook{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-facebook:hover{
+            color: black;
+        }
+
+        .fa-youtube{
+            color: #666666;
+            padding-top: 30px !important;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-youtube:hover{
+            color: black;
+        }
+
+        hr{
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .fa-copyright{
+            font-size: 15px;
+            font-weight: light !important;
+            color: black;
+            margin-left: 90px;
+            margin-bottom: 20px !important;
+        }
+
+        .footer-icon{
+            width: 120px;
+            height: 25px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 5px !important;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
+        <a href="{% url 'search' %}"><span class="fa fa-search"></span></a>
+        <a href="{% url 'cart' %}"><i class="fa badge fa-badge" value="{{ request.user.profile.get_cart_count }}">&#xf07a;</i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Products
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item js-scroll-trigger" href="{% url 'maternity' %}">Maternity Nighties</a>
+                <a class="dropdown-item js-scroll-trigger" href="{% url 'kaftan' %}">Kaftan Nighties</a>
+                <a class="dropdown-item js-scroll-trigger" href="{% url 'threebyfourth_sleeve' %}">3/4 Sleeve Nighties</a>
+              </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'about_us' %}">About Us</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'contact_us' %}">Contact Us</a>
+            </li>
+          </ul>
+          
+          <form class="form-inline my-2 my-lg-0">
+            <a href="" class="account-link js-scroll-trigger"><span class="fa fa-user-circle"></span></a>
+
+            <a class="btn btn-dark js-scroll-trigger" href="{% url 'signup' %}">Register</a>
+    
+            <a class="btn btn-outline-dark js-scroll-trigger" href="{% url 'login' %}">Log in</a>
+           
+          </form>
+        </div>
+    </nav>
+
+    <div id="carouselExampleControls4" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/slide-1.png' %}" class="d-block w-100" alt="..." id="carousel-image">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/slide-2.png' %}" class="d-block w-100" alt="..." id="carousel-image">
+            </div>
+      
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls4" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleControls4" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </button>
+    </div>
+
+    <div class="container-fluid" id="container">
+        <div class="row">
+
+            <div class="col-xs-1 col-lg-1" style="margin-left: 70px;"></div>
+            
+            <div class="col-xs-3 col-lg-3">
+                <div class="grid">
+                    <h6 class="grid-title">OUR BEST SELLING</h6>
+                    <h5 class="grid-title2">MATERNITY NIGHTIES</h5>
+                    <a href="{% url 'maternity' %}" class="btn btn-primary">VIEW PRODUCTS</a>
+                </div>
+            </div>
+
+            <div class="col-xs-3 col-lg-3">
+                <div class="grid">
+                    <h6 class="grid-title">LATEST TRENDING</h6>
+                    <h5 class="grid-title2">KAFTAN NIGHTIES</h5>
+                    <a href="{% url 'kaftan' %}" class="btn btn-primary">VIEW PRODUCTS</a>
+                </div>
+            </div>
+
+            <div class="col-xs-3 col-lg-3">
+                <div class="grid">
+                    <h6 class="grid-title">OUR MOST SELLING</h6>
+                    <h5 class="grid-title2">3/4 SLEEVE NIGHTIES</h5>
+                    <a href="{% url 'threebyfourth_sleeve' %}" class="btn btn-primary">VIEW PRODUCTS</a>
+                </div>
+            </div>
+
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-12 col-lg-12">
+                <h6 class="sub-title">BEST SELLING</h6>
+                <h4 class="main-title">MATERNITY NIGHTIES</h4>
+
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+
+                        {% for i in products|slice:"4" %}
+
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="row">
+
+                                {% for i in products|slice:"4" %}
+
+                                <div class="row row-cols-2 g-2">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <a href="{% url 'get_products' i.slug %}"><img src="/media/{{i.product_images.first.image}}" class="card-img-top" alt="..."></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="{% url 'get_products' i.slug %}" class="link"><h5 class="card-title">{{i.product_name}}</h5></a>
+                                                <p class="card-price">₹ {{i.price}} <strike class="dummy-price">₹{{i.dummy_price}}</strike></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                    <a class="carousel-control-prev" id="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" id="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <a href="{% url 'maternity' %}" class="btn btn-warning">VIEW ALL MATERNITY NIGHTIES</a>
+            </div>
+
+            <div class="col-xs-12 col-lg-12">
+                <h6 class="sub-title">LATEST TRENDING</h6>
+                <h4 class="main-title">KAFTAN NIGHTIES</h4>
+                
+                <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+
+                        {% for j in products|slice:"4" %}
+
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="row">
+
+                                {% for j in products|slice:"4" %}
+                                
+                                <div class="row row-cols-2 g-2">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <a href="{% url 'get_products' j.slug %}"><img src="/media/{{j.product_images.first.image}}" class="card-img-top" alt="..."></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="{% url 'get_products' j.slug %}" class="link"><h5 class="card-title">{{j.product_name}}</h5></a>
+                                                <p class="card-price">₹ {{j.price}} <strike class="dummy-price">₹{{j.dummy_price}}</strike></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+
+                               
+                            </div>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                    <a class="carousel-control-prev" id="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" id="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <a href="{% url 'kaftan' %}" class="btn btn-warning">VIEW ALL KAFTAN NIGHTIES</a>
+            </div>
+
+            <div class="col-xs-12 col-lg-12">
+                <h6 class="sub-title">OUR MOST SELLING</h6>
+                <h4 class="main-title">3/4 SLEEVE NIGHTIES</h4>
+                
+                <div id="carouselExampleControls3" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+
+                        {% for k in products|slice:"4" %}
+
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="row">
+
+                                {% for k in products|slice:"4" %}
+
+                                <div class="row row-cols-2 g-2">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <a href="{% url 'get_products' k.slug %}"><img src="/media/{{k.product_images.first.image}}" class="card-img-top" alt="..."></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="{% url 'get_products' k.slug %}" class="link"><h5 class="card-title">{{k.product_name}}</h5></a>
+                                                <p class="card-price">₹ {{k.price}} <strike class="dummy-price">₹{{k.dummy_price}}</strike></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                    <a class="carousel-control-prev" id="carousel-control-prev" href="#carouselExampleControls3" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" id="carousel-control-next" href="#carouselExampleControls3" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <a href="{% url 'threebyfourth_sleeve' %}" class="btn btn-warning">VIEW ALL 3/4 SLEEVE NIGHTIES</a>
+            </div>
+
+        </div>
+    </div>
+
+    
+    
+    
+    <div class="container-fluid" id="footer">
+        <div class="row">
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-3 col-lg-3">
+                <h6 class="footer-heading">Let's get in touch</h6>
+                <h5 class="footer-logo">BEYOND</h5>
+                <p class="footer-description"> Near PHC, Kodamthuruth<br>Kuthiathod P.O Cherthala<br>Pin 688533</p>
+                <a href="" class="footer-navigation">+918547639106</a><br>
+                <a href="" class="footer-navigation">beyondyourown007@gmail.com</a><br>
+                <a href="" class="footer-navigation"><span class="fa fa-whatsapp"></span></a><a href=""><span class="fa fa-instagram"></span></a> <a href=""><span class="fa fa-facebook"></span></a> <a href=""><span class="fa fa-youtube"></span></a>
+                
+
+
+            </div>
+            <div class="col-xs-2 col-lg-2">
+                <h6 class="footer-heading">Navigation</h6>
+                <a href="{% url 'maternity' %}" class="footer-navigation">Maternity Nighties</a><br>
+                <a href="{% url 'kaftan' %}" class="footer-navigation">Kaffan Nighties</a><br>
+                <a href="{% url 'threebyfourth_sleeve' %}" class="footer-navigation">3/4 Sleeve Nighties</a><br>
+            </div>
+            <div class="col-xs-3 col-lg-3">
+                <h6 class="footer-heading">Information</h6>
+                <a href="{% url 'about_us' %}" class="footer-navigation">About Us</a><br>
+                <a href="" class="footer-navigation">Order Tracking</a><br>
+                <a href="{% url 'terms_and_conditions' %}" class="footer-navigation">Terms And Conditions</a><br>
+                <a href="{% url 'return_and_refund' %}" class="footer-navigation">Return And Refund Policy</a><br>
+                <a href="{% url 'privacy_policy' %}" class="footer-navigation">Privacy Policy</a><br>
+                <a href="{% url 'shipping_policy' %}" class="footer-navigation">Shipping Policy</a><br>
+                <a href="{% url 'contact_us' %}" class="footer-navigation">Contact Us</a><br>
+            </div>
+
+            <div class="col-xs-2 col-lg-2"></div>
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-12 col-lg-12">
+                <hr>
+            </div>
+
+            <div class="col-xs-6 col-lg-6">
+                <span class="fa fa-copyright"> By BEYOND 2024</span>
+            </div>
+
+            <div class="col-xs-6 col-lg-6">
+                <img src="{% static 'images/footer_icons.png' %}" class="footer-icon" alt="">
+            </div>
+            
+        </div>
+    </div>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function(){
+          $(".js-scroll-trigger").click(function(){
+            $(".navbar-collapse").collapse('hide');
+          });
+        });
+    </script>
+
+</body>
+</html>
