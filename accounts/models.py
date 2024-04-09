@@ -23,6 +23,18 @@ class ProductCustomization(models.Model):
     zip_type = models.TextField(max_length = 50)
 
 
+class Variant(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "variant")
+    is_paid = models.BooleanField(default = False)
+    size = models.TextField(max_length = 10, null = True)
+    quantity = models.TextField(max_length = 10, null = True)
+     
+    def __str__(self) -> str:
+        return self.size
+    
+    def __str__(self) -> str:
+        return self.quantity
+
 class Cart(BaseModel):
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "carts")
     is_paid = models.BooleanField(default = False)
@@ -32,5 +44,4 @@ class Cart(BaseModel):
 class CartItems(BaseModel):
     cart = models.ForeignKey(Cart, on_delete = models.CASCADE, related_name = "cart_items")
     product = models.ForeignKey(Product, on_delete = models.SET_NULL, null = True, blank = True)
-    size = models.ForeignKey(Size, on_delete = models.SET_NULL, null = True, blank = True,  related_name = "cart_items_size")
-    quantity = models.ForeignKey(Quantity, on_delete = models.SET_NULL, null = True, blank = True,  related_name = "cart_items_quantity")
+

@@ -4,14 +4,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from products.form import SearchForm
 from products.models import Product, Category, SizeVariant
 from products.models import Size, Quantity
-from accounts.models import ProductCustomization
+from accounts.models import ProductCustomization, Variant
 from accounts.models import *
 
 def get_products(request, slug):
     try:
         product = Product.objects.get(slug =  slug)
         size_variant = SizeVariant.objects.all()
-            
         return render(request, 'product/product.html', {'product': product, 'size_variant': size_variant}, )
 
     except Exception as e:
@@ -20,6 +19,9 @@ def get_products(request, slug):
 
 def customization(request):
     user = request.user
+    size = ""
+    product = Product.objects.all() 
+    size_variant = SizeVariant.objects.all()
 
     if not user.is_authenticated:
         return redirect('login')
@@ -34,7 +36,7 @@ def customization(request):
         zip_type = request.POST['zip_type']
         customization = ProductCustomization(user = user, product_name = product_name, size = size, quantity = quantity, nighty_length = nighty_length, sleeve_type = sleeve_type, feeding_type = feeding_type, zip_type = zip_type)
         customization.save()   
-    return render(request, 'product/customization.html')
+    return render(request, 'product/customization.html', {'product': product, 'size_variant': size_variant})
 
     
    
@@ -44,24 +46,24 @@ def add_to_cart(request, uid):
     try:
         product = Product.objects.get(uid = uid)
         user = request.user
-        size = request.POST.get('size')
-        quantity = request.POST.get('quantity')
+        size_variant = ''
+        quantity_variant = ''
+        
+      
+        if not user.is_authenticated:
+            return redirect('login')
 
         if request.method == 'POST':
-            size = request.POST.get('size')
-            quantity = request.POST.get('quantity')
-            size = Size(size = size)
-            size.save()
-            quantity = Quantity(quantity = quantity)
-            quantity.save()
-    
-        if not user.is_authenticated:
-            return redirect('login') 
-        
+            size_variant = request.POST['size']
+            quantity_variant = request.POST['quantity']
+
         elif product.in_stock:
             cart, _ = Cart.objects.get_or_create(user = user, is_paid = False)
-            cart_item = CartItems.objects.create(cart = cart, product = product, size = size, quantity = quantity) 
-            cart_item.save()
+            variant_data = Variant(user = user, size = size_variant, quantity = quantity_variant)
+            variant_data.save()
+            cart_item = CartItems.objects.create(cart = cart, product = product) 
+            cart_item.save()    
+        
         else:
             return redirect('index')
             

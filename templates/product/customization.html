@@ -353,43 +353,24 @@
                     <label for="product_name" class="label">Product Name</label>
                     <select name="product_name" id="select_box" class="form-control" required>
                         <option value="" value="">Select</option>
-                        <option value="Scarlet Bloom Red Maternity Nighty">Scarlet Bloom Red Maternity Nighty</option>
-                        <option value="Scarlet Bloom Sky Blue Maternity Nighty">Scarlet Bloom Sky Blue Maternity Nighty</option>
-                        <option value="Scarlet Bloom Rose Maternity Nighty">Scarlet Bloom Rose Maternity Nighty</option>
-                        <option value="Scarlet Bloom Light Red Maternity Nighty">Scarlet Bloom Light Red Maternity Nighty</option>
-                        <option value="Scarlet Bloom Green Maternity Nighty">Scarlet Bloom Green Maternity Nighty</option>
-                        <option value="Scarlet Bloom Light Green Maternity Nighty">Scarlet Bloom Light Green Maternity Nighty</option>
-                        <option value="Scarlet Bloom Light Pink Maternity Nighty">Scarlet Bloom Light Pink Maternity Nighty</option>
-                        <option value="Scarlet Bloom Dark Green Maternity Nighty">Scarlet Bloom Dark Green Maternity Nighty</option>
-                        <option value="Scarlet Bloom Light Blue Maternity Nighty">Scarlet Bloom Light Blue Maternity Nighty</option>
-                        <option value="Scarlet Bloom Yellow Green Collar Maternity Nighty">Scarlet Bloom Yellow Green Collar Maternity Nighty</option>
-                        <option value="Scarlet Bloom Maroon Collar Maternity Nighty">Scarlet Bloom Maroon Collar Maternity Nighty</option>
-                        <option value="Scarlet Bloom Maroon Blue Collar Maternity Nighty">Scarlet Bloom Maroon Blue Collar Maternity Nighty</option>
-                        <option value="Scarlet Bloom Light Green With Collar Maternity Nighty">Scarlet Bloom Light Green With Collar Maternity Nighty</option>
-                        <option value="Scarlet Bloom Maroon Green Collar Maternity Nighty">Scarlet Bloom Maroon Green Collar Maternity Nighty</option>
-                        <option value="Scarlet Bloom Black Collar Maternity Nighty">Scarlet Bloom Black Collar Maternity Nighty</option>
-                        <option value="Scarlet Bloom Grey Collar Maternity Nighty">Scarlet Bloom Grey Collar Maternity Nighty</option>
-                        <option value="Scarlet Bloom Black Maroon Kaftan Nighty">Scarlet Bloom Black Maroon Kaftan Nighty</option>
-                        <option value="Scarlet Bloom Black White Kaftan Nighty">Scarlet Bloom Black White Kaftan Nighty</option>
-                        <option value="Scarlet Bloom Black Kaftan Nighty">Scarlet Bloom Black Kaftan Nighty</option>
-                        <option value="Scarlet Bloom Black Red Kaftan Nighty">Scarlet Bloom Black Red Kaftan Nighty</option>
-                        <option value="Scarlet Bloom Light Green Three By Fourth Sleeve Nighty">Scarlet Bloom Light Green Three By Fourth Sleeve Nighty</option>
-                        <option value="Scarlet Bloom Sky Blue Three By Fourth Sleeve Nighty">Scarlet Bloom Sky Blue Three By Fourth Sleeve Nighty</option>
-                        <option value="Scarlet Bloom Blue Three By Fourth Sleeve Nighty">Scarlet Bloom Blue Three By Fourth Sleeve Nighty</option>
-                        <option value="Scarlet Bloom Purple Three By Fourth Sleeve Nighty">Scarlet Bloom Purple Three By Fourth Sleeve Nighty/option>
+                        
+                        {% for products in product %}
+
+                        <option value="{{products.product_name}}">{{products.product_name}}</option>
+
+                        {% endfor %}
+
                     </select>
 
                     <label for="size" class="label">Size</label>
                     <select name="size" id="select_box" class="form-control" required>
                         <option value="" value="">Select</option>
-                        <option value="XS">XS</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
-                        <option value="XXXL">XXXL</option>
-                        <option value="XXXXL">XXXXL</option>
+                        
+                        {% for size_variants in size_variant %}
+
+                        <option value="{{size_variants.size_name}}">{{size_variants.size_name}}</option>
+
+                        {% endfor %}
                     </select>
 
                     <label for="quantity" class="label">Quantity</label>

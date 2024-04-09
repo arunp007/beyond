@@ -32,8 +32,4 @@ class SizeVariantAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 
-admin.site.register(Size)
-
-admin.site.register(Quantity)
-
 admin.site.register(ProductImage)

@@ -21,10 +21,10 @@ class SizeVariant(BaseModel):
         return self.size_name
 
 class Size(BaseModel):
-    size = models.CharField(max_length = 100, null = True)
+    pass
 
 class Quantity(BaseModel):
-    quantity = models.IntegerField(null = True)
+    pass
 
 
 class Product(BaseModel):
