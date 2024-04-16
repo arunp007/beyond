@@ -29,11 +29,6 @@ class Variant(models.Model):
     size = models.TextField(max_length = 10, null = True)
     quantity = models.TextField(max_length = 10, null = True)
      
-    def __str__(self) -> str:
-        return self.size
-    
-    def __str__(self) -> str:
-        return self.quantity
 
 class Cart(BaseModel):
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "carts")
