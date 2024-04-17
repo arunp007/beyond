@@ -429,7 +429,7 @@
                 <p class="description">{{product.product_description}}</p>
                 
     
-                <form method="POST" action="{% url 'add_to_cart' product.uid %}">
+                <form method="post">
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="form-group">
