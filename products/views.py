@@ -46,17 +46,14 @@ def add_to_cart(request, uid):
     try:
         product = Product.objects.get(uid = uid)
         user = request.user
-        size_variant = ''
-        quantity_variant = ''
+        size_variant = request.GET.get('size')
+        quantity_variant = request.GET.get('quantity')
         
       
         if not user.is_authenticated:
             return redirect('login')
 
-        if request.method == 'POST':
-            size_variant = request.POST['size']
-            quantity_variant = request.POST['quantity']
-
+        
         elif product.in_stock:
             cart, _ = Cart.objects.get_or_create(user = user, is_paid = False)
             variant_data = Variant(user = user, size = size_variant, quantity = quantity_variant)
