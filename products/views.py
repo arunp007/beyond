@@ -3,8 +3,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from products.form import SearchForm
 from products.models import Product, Category, SizeVariant
-from products.models import Size, Quantity
-from accounts.models import ProductCustomization, Variant
+from accounts.models import ProductCustomization
 from accounts.models import *
 
 def get_products(request, slug):
@@ -46,8 +45,6 @@ def add_to_cart(request, uid):
     try:
         product = Product.objects.get(uid = uid)
         user = request.user
-        size_variant = request.GET.get('size')
-        quantity_variant = request.GET.get('quantity')
         
       
         if not user.is_authenticated:
@@ -56,8 +53,6 @@ def add_to_cart(request, uid):
         
         elif product.in_stock:
             cart, _ = Cart.objects.get_or_create(user = user, is_paid = False)
-            variant_data = Variant(user = user, size = size_variant, quantity = quantity_variant)
-            variant_data.save()
             cart_item = CartItems.objects.create(cart = cart, product = product) 
             cart_item.save()    
         

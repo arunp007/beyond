@@ -428,49 +428,6 @@
                 <label class="price">₹ {{product.price}} <strike class="dummy_price">₹ {{product.dummy_price}}</strike> {% if not product.in_stock %} <label class="out_off_stock">(Out of Stock)</label> {% endif %}<br></label> 
                 <p class="description">{{product.product_description}}</p>
                 
-    
-                <form method="get">
-                    {% csrf_token %}
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            
-                            <select name="quantity" class="form-control" id="quantity">
-
-                                <option value="" value="">Select</option>
-                                
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="size" class="size">Size:</label>
-                            <select name="size" id="inputSize" class="form-control">
-                                
-                                <option value="" value="">Select Size</option>
-                                
-                                {% for size in size_variant %}
-
-                                <option value="{{size.size_name}}">{{size.size_name}}</option>
-
-                                {% endfor %}
-                              
-                            </select>
-                            
-                        </div>
-                        
-                    </div>
-                </form>
                 
 
                 <a href="{% url 'add_to_cart' product.uid %}" id="add-to-cart" type="button" class="btn btn-outline-dark">Add To Cart</a><br>
