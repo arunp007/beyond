@@ -294,11 +294,20 @@
 
             .card-img-top{
                 width: 160px !important;
-                height: 300px !important;
+                height: 160px !important;
             }
 
             .card-title{
                 font-size: 11px;
+                margin-top: -130px;
+            }
+
+            .card-image .card-img-top{
+                transition: transform .5s ease;
+            }
+
+            .card-image:hover .card-img-top{
+                transform: scale(1.0);
             }
         }
 
