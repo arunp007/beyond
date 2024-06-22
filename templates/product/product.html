@@ -163,21 +163,32 @@
         }
 
 
-        .quantity{
-            margin-top: 30px !important;
-            font-weight: bold;
-            margin-left: 1px;
-            margin-bottom: 20px;
-        }
-
         #quantity{
-            margin-left: 1px;
+            margin-top: 40px !important;
+            margin-bottom: 40px;
+            font-weight: bold;
+            margin-left: 15px;
+            width: 200px;
+            border: 2px solid;
         }
 
-        .size{
-            margin-left: 25px;
-            margin-top: 30px !important;
+        #size{
+            margin-left: 15px;
+            margin-top: 40px !important;
+            margin-bottom: 40px;
             font-weight: bold;
+            width: 200px;
+            border: 2px solid;
+        }
+
+        @media (max-width: 768px){
+            #quantity{
+                width: 165px !important;
+            }
+
+            #size{
+                width: 150px !important;
+            }
         }
 
         #inputSize{
@@ -428,6 +439,32 @@
                 <label class="price">₹ {{product.price}} <strike class="dummy_price">₹ {{product.dummy_price}}</strike> {% if not product.in_stock %} <label class="out_off_stock">(Out of Stock)</label> {% endif %}<br></label> 
                 <p class="description">{{product.product_description}}</p>
                 
+               <div class="form-inline">
+                    <select class="form-control" name="size" id="size">
+                        <option value="">Select Size</option>
+
+                        {% for  size in size_variant %}
+
+                            <option value="{{size.size_name}}">{{size.size_name}}</option>
+
+                        {% endfor %}
+                    </select>
+
+                    <select class="form-control" name="quantity" id="quantity">
+                        <option value="">Select Quantity</option>
+
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
                 
 
                 <a href="{% url 'add_to_cart' product.uid %}" id="add-to-cart" type="button" class="btn btn-outline-dark">Add To Cart</a><br>
